@@ -15,14 +15,16 @@
                     sweepFlag: 0,
                     e: { x: 125, y: 125 },
                 })
-            // .L({x: 125, y: 80})
+            .L({x: 125, y: 80})
             .Z()
         .build();
 
     if (debug) console.log(path);
 </script>
 
-<Point point={{ x: 80, y: 80 }} strokeWidth={3} />
+<!-- <Point point={{ x: 80, y: 80 }} strokeWidth={3} /> -->
+<Point point={{ x: 125, y: 125 }} strokeWidth={3} />
+<!-- <Point point={{x: 125, y: 80}} strokeWidth={3} /> -->
 
 <path
     d={`${path}`}

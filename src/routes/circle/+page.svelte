@@ -40,14 +40,10 @@
                 <CircleCircumferencePoint circle={c2} theta={90} />
 
                 <Circle circle={c3} />
-                <CircleCircumferenceSlice circle={c3} />
-                <CircleCircumferenceSlice
-                    circle={c3}
-                    theta1={160}
-                    theta2={190}
-                />
+                <CircleCircumferenceSlice circle={c3} theta1={0} theta2={200} />
                 
-                <Arc {debug} />
+                
+                <!-- <Arc {debug} /> -->
 
             </svg>
         </div>
