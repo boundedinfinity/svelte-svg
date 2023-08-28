@@ -30,6 +30,7 @@ export interface LineDescriptor {
 }
 
 export type RotationDirection = 'clockwise' | 'counter-clockwise'
+export type LineCap = 'butt'| 'round' | 'square' | 'line' | 'point' | 'arrow'
 
 export interface CubicBezierAbs {
     c1: Point

@@ -3,15 +3,15 @@
     import type { LineDescriptor } from "$lib/types.js";
     const debug = true;
 
-    const l1: LineDescriptor = { p1: { x: 0, y: 0 }, p2: { x: 200, y: 200 } };
-    const l2: LineDescriptor = { p1: { x: 200, y: 0 }, p2: { x: 0, y: 200 } };
+    const l1: LineDescriptor = { p1: { x: 20, y: 20 }, p2: { x: 70, y: 70 } };
+    const l2: LineDescriptor = { p1: { x: 70, y: 20 }, p2: { x: 20, y: 70 } };
 </script>
 
 <main>
     <section>
         <h2>LineSvg</h2>
         <div>
-            <LineSvg {debug} {...l1} strokeWidth={10} />
+            <LineSvg {debug} {...l1} strokeWidth={3} />
         </div>
     </section>
     <section>
@@ -20,14 +20,14 @@
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={200}
-                height={200}
-                viewBox="0 0 {200} {200}"
+                height={300}
+                viewBox="0 0 {200} {300}"
             >
                 <Line line={l1} />
                 <Line line={l2} />
-                <LinePoint line={l1} percentage={25} />
+                <LinePoint line={l1} percentage={30} />
                 <LineMidPoint line={l1} />
-                <LinePoint line={l1} percentage={75} />
+                <LinePoint line={l1} percentage={65} />
             </svg>
         </div>
     </section>

@@ -21,5 +21,5 @@
     height={viewBox.height}
     viewBox={viewBoxToString(viewBox)}
 >
-    <Line {line} --stroke-width={strokeWidth} />
+    <Line {line} --stroke-width={strokeWidth} --stroke="black" />
 </svg>

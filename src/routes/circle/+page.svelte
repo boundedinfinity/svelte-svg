@@ -13,6 +13,7 @@
     const c1: CircleDescriptor = { c: { x: 45, y: 45 }, r: 30 };
     const c2: CircleDescriptor = { c: { x: 150, y: 150 }, r: 30 };
     const c3: CircleDescriptor = { c: { x: 45, y: 150 }, r: 30 };
+    const c4: CircleDescriptor = { c: { x: 45, y: 250 }, r: 40 };
 </script>
 
 <main>
@@ -28,8 +29,8 @@
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={200}
-                height={200}
-                viewBox="0 0 {200} {200}"
+                height={300}
+                viewBox="0 0 {200} {300}"
             >
                 <Circle circle={c1} />
                 <CircleCircumferenceLine circle={c1} />
@@ -40,7 +41,10 @@
                 <CircleCircumferencePoint circle={c2} theta={90} />
 
                 <Circle circle={c3} />
-                <CircleCircumferenceSlice circle={c3} theta1={0} theta2={200} />
+                <CircleCircumferenceSlice circle={c3} theta1={90} theta2={0} />
+
+                <Circle circle={c4} />
+                <CircleCircumferenceSlice circle={c4} theta1={0} theta2={90} --fill="red"/>
                 
                 
                 <!-- <Arc {debug} /> -->

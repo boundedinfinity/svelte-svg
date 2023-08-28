@@ -1,0 +1,8 @@
+<script lang="ts">
+    import Polygon from "./Polygon.svelte";
+    import type { CircleDescriptor } from "../types.js";
+
+    export let circle: CircleDescriptor;
+</script>
+
+<Polygon {circle} vertices={5} rotate={-90} />

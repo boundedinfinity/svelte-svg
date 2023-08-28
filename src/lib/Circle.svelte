@@ -3,11 +3,12 @@
 
     export let circle: CircleDescriptor;
     export let debug = false;
+    export let style = "";
 
     if (debug) console.log(circle);
 </script>
 
-<circle cx={circle.c.x} cy={circle.c.y} r={circle.r} />
+<circle cx={circle.c.x} cy={circle.c.y} r={circle.r} {style} />
 
 <style>
     circle {
