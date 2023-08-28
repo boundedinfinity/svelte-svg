@@ -1,0 +1,22 @@
+import type { ViewBox } from "./types.js";
+
+export function viewBoxToString(vb: ViewBox): string {
+    return `${vb.minX} ${vb.minY} ${vb.width} ${vb.height}`;
+}
+
+export function degToRad(degrees: number): number {
+    return (degrees * Math.PI) / 180;
+}
+
+export function radToDeg(radians: number): number {
+    return (radians * 180) / Math.PI;
+}
+
+export function percentageInc(size: number, percentage: number) : number {
+    return size + size * percentage
+}
+
+export function percentageDec(size: number, percentage: number) : number {
+    return size - size * percentage
+}
+
