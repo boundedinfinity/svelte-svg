@@ -1,16 +1,16 @@
 <script lang="ts">
     import { Line } from "./index.js";
     import { lineViewBox } from "./line.js";
-    import { viewBoxToString } from "./util.js";
+    import { viewBoxToString, addStyle } from "./util.js";
     import type { LineDescriptor, Point } from "./types.js";
 
     export let p1: Point;
     export let p2: Point;
-    export let strokeWidth = 3;
     export let debug = false;
 
-    const line: LineDescriptor = { p1, p2 }
-    const viewBox = lineViewBox({ p1, p2 }, strokeWidth);
+    const line: LineDescriptor = { p1, p2 };
+    const viewBox = lineViewBox({ p1, p2 });
+    const style = addStyle("", "fill", "black");
 
     if (debug) console.log(viewBox);
 </script>
@@ -21,5 +21,5 @@
     height={viewBox.height}
     viewBox={viewBoxToString(viewBox)}
 >
-    <Line {line} --stroke-width={strokeWidth} --stroke="black" />
+    <Line {line} {style} />
 </svg>

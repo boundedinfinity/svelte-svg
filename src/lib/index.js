@@ -1,13 +1,13 @@
 // Reexport your entry components here
 
-export {default as Point} from './Point.svelte'
+export { default as Point } from './Point.svelte'
 
 export { default as Arc } from "./Arc.svelte";
 
 export { default as Circle } from "./Circle.svelte";
-export { default as CircleCircumferencePoint } from "./CircleCircumferencePoint.svelte";
-export { default as CircleCircumferenceLine } from "./CircleCircumferenceLine.svelte"
-export { default as CircleCircumferenceSlice } from "./CircleCircumferenceSlice.svelte"
+export { default as CircleCircumPoint } from "./CircleCircumPoint.svelte";
+export { default as CircleRadiusLine } from "./CircleRadiusLine.svelte"
+export { default as CircleRadiusSlice } from "./CircleRadiusSlice.svelte"
 export { default as CircleSvg } from "./CircleSvg.svelte"
 
 export { default as Line } from "./Line.svelte";

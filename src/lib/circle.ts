@@ -7,10 +7,10 @@ import type {
 } from "./types.js";
 import { degToRad } from "./util.js";
 
-export function circleViewBox(
-    circle: CircleDescriptor,
-    strokeWidth: number
-): ViewBox {
+export const DEFAULT_CIRCLE_STROKE_WIDTH = 3
+
+export function circleViewBox(circle: CircleDescriptor): ViewBox {
+    const strokeWidth = circle.stroke || DEFAULT_CIRCLE_STROKE_WIDTH;
     const length: number = circle.r * 2 + strokeWidth;
     const half = length / 2;
 

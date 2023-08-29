@@ -2,10 +2,9 @@
     import {
         Circle,
         CircleSvg,
-        CircleCircumferenceLine,
-        CircleCircumferencePoint,
-        CircleCircumferenceSlice,
-        Arc,
+        CircleRadiusLine,
+        CircleCircumPoint,
+        CircleRadiusSlice,
     } from "$lib/index.js";
     import type { CircleDescriptor } from "$lib/types.js";
     const debug = true;
@@ -33,22 +32,23 @@
                 viewBox="0 0 {200} {300}"
             >
                 <Circle circle={c1} />
-                <CircleCircumferenceLine circle={c1} />
-                <CircleCircumferenceLine circle={c1} theta={90} />
+                <CircleRadiusLine circle={c1} />
+                <CircleRadiusLine circle={c1} theta={90} />
 
                 <Circle circle={c2} />
-                <CircleCircumferencePoint circle={c2} />
-                <CircleCircumferencePoint circle={c2} theta={90} />
+                <CircleCircumPoint circle={c2} />
+                <CircleCircumPoint circle={c2} theta={90} />
 
                 <Circle circle={c3} />
-                <CircleCircumferenceSlice circle={c3} theta1={90} theta2={0} />
+                <CircleRadiusSlice circle={c3} theta1={90} theta2={0} />
 
                 <Circle circle={c4} />
-                <CircleCircumferenceSlice circle={c4} theta1={0} theta2={90} --fill="red"/>
-                
-                
-                <!-- <Arc {debug} /> -->
-
+                <CircleRadiusSlice
+                    circle={c4}
+                    theta1={0}
+                    theta2={90}
+                    --fill="red"
+                />
             </svg>
         </div>
     </section>

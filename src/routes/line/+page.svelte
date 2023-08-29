@@ -11,7 +11,7 @@
     <section>
         <h2>LineSvg</h2>
         <div>
-            <LineSvg {debug} {...l1} strokeWidth={3} />
+            <LineSvg {debug} {...l1} />
         </div>
     </section>
     <section>

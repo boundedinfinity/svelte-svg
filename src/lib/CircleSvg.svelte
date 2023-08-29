@@ -8,7 +8,7 @@
     export let debug = false;
 
     const circle = { c: { x: 0, y: 0 }, r };
-    const viewBox = circleViewBox(circle, strokeWidth);
+    const viewBox = circleViewBox(circle);
 
     if (debug) console.log(viewBox);
 </script>
@@ -19,5 +19,5 @@
     height={viewBox.height}
     viewBox={viewBoxToString(viewBox)}
 >
-    <Circle {circle} --stroke-width={strokeWidth} />
+    <Circle {circle} style="--stroke-width: {strokeWidth};" />
 </svg>

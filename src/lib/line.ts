@@ -1,9 +1,9 @@
 import type { LineDescriptor, Point, ViewBox } from "./types.js";
 
-export function lineViewBox(
-    line: LineDescriptor,
-    strokeWidth: number
-): ViewBox {
+export const DEFAULT_LINE_STROKE_WIDTH = 3;
+
+export function lineViewBox(line: LineDescriptor): ViewBox {
+    const strokeWidth = line.stroke || DEFAULT_LINE_STROKE_WIDTH;
     return {
         minX: Math.min(line.p1.x, line.p2.x) - strokeWidth / 2,
         minY: Math.min(line.p1.y, line.p2.y) - strokeWidth / 2,

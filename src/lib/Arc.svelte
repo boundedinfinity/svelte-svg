@@ -22,9 +22,9 @@
     if (debug) console.log(path);
 </script>
 
-<!-- <Point point={{ x: 80, y: 80 }} strokeWidth={3} /> -->
-<Point point={{ x: 125, y: 125 }} strokeWidth={3} />
-<!-- <Point point={{x: 125, y: 80}} strokeWidth={3} /> -->
+<!-- <Point point={{ x: 80, y: 80 }} /> -->
+<Point point={{ x: 125, y: 125 }}  />
+<!-- <Point point={{x: 125, y: 80}} /> -->
 
 <path
     d={`${path}`}

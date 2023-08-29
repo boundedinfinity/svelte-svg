@@ -1,0 +1,1 @@
+export const DEFAULT_CIRCLE_STROKE_WIDTH = 3

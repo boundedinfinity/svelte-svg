@@ -1,6 +1,7 @@
 export interface Point {
     x: number;
     y: number;
+    stroke?: number;
 }
 
 export interface Delta {
@@ -20,6 +21,7 @@ export interface ViewBox {
 export interface CircleDescriptor {
     c: Point;
     r: number;
+    stroke?: number;
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line
@@ -27,6 +29,7 @@ export interface CircleDescriptor {
 export interface LineDescriptor {
     p1: Point;
     p2: Point;
+    stroke?: number;
 }
 
 export type RotationDirection = 'clockwise' | 'counter-clockwise'
