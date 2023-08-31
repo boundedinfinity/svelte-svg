@@ -2,8 +2,8 @@
     import Point from "./Point.svelte";
     import { pathBuilder } from "./path.js";
 
-    // export let center: Point = 
-    export let debug = false;
+    export let style: string = "";
+    export let debug: boolean = false;
 
     const path = pathBuilder()
             .M({ x: 80, y: 80 })
@@ -23,7 +23,7 @@
 </script>
 
 <!-- <Point point={{ x: 80, y: 80 }} /> -->
-<Point point={{ x: 125, y: 125 }}  />
+<Point point={{ x: 125, y: 125 }} {style} />
 <!-- <Point point={{x: 125, y: 80}} /> -->
 
 <path

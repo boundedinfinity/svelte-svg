@@ -19,7 +19,7 @@
     <section>
         <h2>CircleSvg</h2>
         <div>
-            <CircleSvg {debug} r={100} />
+            <CircleSvg {debug} r={100} stroke={5} />
         </div>
     </section>
     <section>
@@ -31,9 +31,18 @@
                 height={300}
                 viewBox="0 0 {200} {300}"
             >
-                <Circle circle={c1} />
-                <CircleRadiusLine circle={c1} />
-                <CircleRadiusLine circle={c1} theta={90} />
+                <Circle
+                    circle={c1}
+                    --stroke="green"
+                    --stroke-dasharray="10 3"
+                    --stroke-opacity="15%"
+                />
+                <CircleRadiusLine circle={c1} --stroke-opacity="15%" />
+                <CircleRadiusLine
+                    circle={c1}
+                    theta={90}
+                    --stroke-opacity="15%"
+                />
 
                 <Circle circle={c2} />
                 <CircleCircumPoint circle={c2} />

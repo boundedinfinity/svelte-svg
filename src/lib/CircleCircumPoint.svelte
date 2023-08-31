@@ -6,9 +6,10 @@
     export let circle: CircleGeometry;
     export let theta = 0;
     export let direction: RotationDirection = "counter-clockwise"
-    export let debug = false;
+    export let style: string = "";
+    export let debug: boolean = false;
 
     const point = circleCircumferencePoint(circle, theta, direction);
 </script>
 
-<Point {point} {debug} />
+<Point {point} {debug} {style} />

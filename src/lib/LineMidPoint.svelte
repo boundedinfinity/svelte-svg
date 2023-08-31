@@ -3,7 +3,8 @@
     import LinePoint from "./LinePoint.svelte";
 
     export let line: LineGeometry;
-    export let debug = false;
+    export let style: string = "";
+    export let debug: boolean = false;
 </script>
 
-<LinePoint {line} percentage={50} {debug} />
+<LinePoint {line} percentage={50} {debug} {style} />

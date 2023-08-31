@@ -20,6 +20,8 @@ export type {
     QuadraticBezierShortcutRelGeometry,
 } from "./types.js";
 
+export { PathBuilder, pathBuilder } from "./path.js";
+
 export { default as Point } from "./Point.svelte";
 
 export { default as Arc } from "./Arc.svelte";

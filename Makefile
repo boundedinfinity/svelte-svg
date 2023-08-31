@@ -34,4 +34,5 @@ publish:
 	git commit -m "updates"
 	bump2version patch
 	git push origin master
+	git push origin --tags
 	npm publish

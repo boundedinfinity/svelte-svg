@@ -1,20 +1,24 @@
 <script lang="ts">
     import type { CircleGeometry } from "./types.js";
-    import { circleCircumferencePoint } from "./circle.js";
+    import {
+        circleCircumferencePoint,
+        DEFAULT_CIRCLE_STROKE_WIDTH,
+    } from "./circle.js";
     import { pathBuilder } from "./path.js";
+    import { debugDump } from "./util.js";
 
     export let circle: CircleGeometry;
     export let theta1 = 0;
     export let theta2 = 90;
-    export let style = ""
-    export let debug = false;
+    export let style: string = "";
+    export let debug: boolean = false;
 
     const p1 = circleCircumferencePoint(circle, theta1);
     const p2 = circleCircumferencePoint(circle, theta2);
     const largeArcFlag = Math.abs(theta1 - theta2) < 180 ? 0 : 1;
     const sweepFlag = theta1 < theta2 ? 0 : 1;
 
-    const path = pathBuilder()
+    const d = pathBuilder()
         .M(p1)
         .A({
             rx: circle.r,
@@ -28,15 +32,14 @@
         .Z()
         .build();
 
-    if (debug) console.log(path);
+    debugDump(debug, d);
 </script>
 
-<path d={`${path}`} {style} />
+<path {d} {style} stroke-width={DEFAULT_CIRCLE_STROKE_WIDTH} />
 
 <style>
     path {
         stroke: var(--stroke, black);
-        stroke-width: var(--stroke-width, 3);
         stroke-linecap: var(--stroke-linecap, round);
         fill: var(--fill, grey);
         fill-opacity: var(--fill-opacity, 100%);
