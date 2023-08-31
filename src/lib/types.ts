@@ -1,16 +1,16 @@
-export interface Point {
+export interface PointGeometry {
     x: number;
     y: number;
     stroke?: number;
 }
 
-export interface Delta {
+export interface DeltaGeometry {
     dx: number,
     dy: number,
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
-export interface ViewBox {
+export interface ViewBoxGeometry {
     minX: number;
     minY: number;
     width: number;
@@ -18,77 +18,77 @@ export interface ViewBox {
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle
-export interface CircleDescriptor {
-    c: Point;
+export interface CircleGeometry {
+    c: PointGeometry;
     r: number;
     stroke?: number;
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap
-export interface LineDescriptor {
-    p1: Point;
-    p2: Point;
+export interface LineGeometry {
+    p1: PointGeometry;
+    p2: PointGeometry;
     stroke?: number;
 }
 
 export type RotationDirection = 'clockwise' | 'counter-clockwise'
 export type LineCap = 'butt'| 'round' | 'square' | 'line' | 'point' | 'arrow'
 
-export interface CubicBezierAbs {
-    c1: Point
-    c2: Point
-    e: Point
+export interface CubicBezierAbsGeometry {
+    c1: PointGeometry
+    c2: PointGeometry
+    e: PointGeometry
 }
 
-export interface CubicBezierRel {
-    c1: Delta
-    c2: Delta
-    e: Delta
+export interface CubicBezierRelGeometry {
+    c1: DeltaGeometry
+    c2: DeltaGeometry
+    e: DeltaGeometry
 }
 
-export interface CubicBezierShortcutAbs {
-    c2: Point
-    e: Point
+export interface CubicBezierShortcutAbsGeometry {
+    c2: PointGeometry
+    e: PointGeometry
 }
 
-export interface CubicBezierShortcutRel {
-    c2: Delta
-    e: Delta
+export interface CubicBezierShortcutRelGeometry {
+    c2: DeltaGeometry
+    e: DeltaGeometry
 }
 
-export interface QuadraticBezierAbs {
-    c1: Point
-    e: Point
+export interface QuadraticBezierAbsGeometry {
+    c1: PointGeometry
+    e: PointGeometry
 }
 
-export interface QuadraticBezierRel {
-    c1: Delta
-    e: Delta
+export interface QuadraticBezierRelGeometry {
+    c1: DeltaGeometry
+    e: DeltaGeometry
 }
 
-export interface QuadraticBezierShortcutAbs {
-    e: Point
+export interface QuadraticBezierShortcutAbsGeometry {
+    e: PointGeometry
 }
 
-export interface QuadraticBezierShortcutRel {
-    e: Delta
+export interface QuadraticBezierShortcutRelGeometry {
+    e: DeltaGeometry
 }
 
-export interface ArcAbs {
+export interface ArcAbsGeometry {
     rx: number;
     ry: number;
     xAxisRotation: number;
     largeArcFlag: any;
     sweepFlag: any;
-    e: Point
+    e: PointGeometry
 }
 
-export interface ArcRel {
+export interface ArcRelGeometry {
     rx: number;
     ry: number;
     xAxisRotation: number;
     largeArcFlag: any;
     sweepFlag: any;
-    e: Delta
+    e: DeltaGeometry
 }

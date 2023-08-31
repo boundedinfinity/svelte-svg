@@ -1,10 +1,10 @@
 <script lang="ts">
     import { Line, LineSvg, LinePoint, LineMidPoint } from "$lib/index.js";
-    import type { LineDescriptor } from "$lib/types.js";
+    import type { LineGeometry } from "$lib/types.js";
     const debug = true;
 
-    const l1: LineDescriptor = { p1: { x: 20, y: 20 }, p2: { x: 70, y: 70 } };
-    const l2: LineDescriptor = { p1: { x: 70, y: 20 }, p2: { x: 20, y: 70 } };
+    const l1: LineGeometry = { p1: { x: 20, y: 20 }, p2: { x: 70, y: 70 } };
+    const l2: LineGeometry = { p1: { x: 70, y: 20 }, p2: { x: 20, y: 70 } };
 </script>
 
 <main>

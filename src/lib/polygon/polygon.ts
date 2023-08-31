@@ -1,12 +1,12 @@
-import type { CircleDescriptor, Point } from "../types.js";
+import type { CircleGeometry, PointGeometry } from "../types.js";
 import { circleCircumferencePoint } from "../circle.js";
 import { pathBuilder} from '../path.js'
 
 export function polygonVertices(
-    circle: CircleDescriptor,
+    circle: CircleGeometry,
     vertices: number
-): Point[] {
-    const points: Point[] = [];
+): PointGeometry[] {
+    const points: PointGeometry[] = [];
     const step = 360 / vertices;
 
     for (let theta = step; theta <= 360; theta += step) {
@@ -17,7 +17,7 @@ export function polygonVertices(
 }
 
 
-export function polygonPath(circle: CircleDescriptor,
+export function polygonPath(circle: CircleGeometry,
     vertices: number) : string {
         const points = polygonVertices(circle, vertices)
         const builder = pathBuilder()

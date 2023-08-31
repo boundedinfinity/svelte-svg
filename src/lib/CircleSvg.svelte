@@ -4,7 +4,7 @@
     import { viewBoxToString } from "./util.js";
 
     export let r: number = 10;
-    export let strokeWidth = 3;
+    export let style = ""
     export let debug = false;
 
     const circle = { c: { x: 0, y: 0 }, r };
@@ -19,5 +19,5 @@
     height={viewBox.height}
     viewBox={viewBoxToString(viewBox)}
 >
-    <Circle {circle} style="--stroke-width: {strokeWidth};" />
+    <Circle {circle} {style} />
 </svg>

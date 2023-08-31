@@ -1,6 +1,6 @@
-import type { ViewBox } from "./types.js";
+import type { ViewBoxGeometry } from "./types.js";
 
-export function viewBoxToString(vb: ViewBox): string {
+export function viewBoxToString(vb: ViewBoxGeometry): string {
     return `${vb.minX} ${vb.minY} ${vb.width} ${vb.height}`;
 }
 

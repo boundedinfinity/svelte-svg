@@ -1,16 +1,16 @@
 <script lang="ts">
     import Circle from "./Circle.svelte";
-    import type { CircleDescriptor, Point } from "./types.js";
+    import type { CircleGeometry, PointGeometry } from "./types.js";
     import { percentageInc, addStyle } from "./util.js";
     import { DEFAULT_CIRCLE_STROKE_WIDTH } from "./point.js";
 
-    export let point: Point;
+    export let point: PointGeometry;
     export let offset: number = 0.05;
     export let debug = false;
 
     const strokeWidth = point.stroke || DEFAULT_CIRCLE_STROKE_WIDTH;
 
-    const circle: CircleDescriptor = {
+    const circle: CircleGeometry = {
         c: point,
         r: percentageInc(strokeWidth, offset),
     };

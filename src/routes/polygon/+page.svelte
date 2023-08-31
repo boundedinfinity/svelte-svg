@@ -1,24 +1,24 @@
 <script lang="ts">
     
     import { Point, Triangle, Square, Pentagon, Hexagon, Octagon, Enneagon, Decagon, Dodecagon } from "$lib/index.js";
-    import type { LineDescriptor, CircleDescriptor } from "$lib/types.js";
+    import type { LineGeometry, CircleGeometry } from "$lib/types.js";
     const debug = true;
 
-    const l1: LineDescriptor = { p1: { x: 20, y: 20 }, p2: { x: 70, y: 70 } };
-    const l2: LineDescriptor = { p1: { x: 70, y: 20 }, p2: { x: 20, y: 70 } };
+    const l1: LineGeometry = { p1: { x: 20, y: 20 }, p2: { x: 70, y: 70 } };
+    const l2: LineGeometry = { p1: { x: 70, y: 20 }, p2: { x: 20, y: 70 } };
     
     const r = 25
     
-    const circle3: CircleDescriptor = { c: { x: 50, y: 50 }, r };
-    const circle4: CircleDescriptor = { c: { x: 50, y: 100 }, r };
-    const circle5: CircleDescriptor = { c: { x: 50, y: 150 }, r };
-    const circle6: CircleDescriptor = { c: { x: 50, y: 200 }, r };
-    const circle7: CircleDescriptor = { c: { x: 50, y: 250 }, r };
-    const circle8: CircleDescriptor = { c: { x: 150, y: 50 }, r };
-    const circle9: CircleDescriptor = { c: { x: 150, y: 100 }, r };
-    const circle10: CircleDescriptor = { c: { x: 150, y: 150 }, r };
-    const circle11: CircleDescriptor = { c: { x: 150, y: 200 }, r };
-    const circle12: CircleDescriptor = { c: { x: 150, y: 250 }, r };
+    const circle3: CircleGeometry = { c: { x: 50, y: 50 }, r };
+    const circle4: CircleGeometry = { c: { x: 50, y: 100 }, r };
+    const circle5: CircleGeometry = { c: { x: 50, y: 150 }, r };
+    const circle6: CircleGeometry = { c: { x: 50, y: 200 }, r };
+    const circle7: CircleGeometry = { c: { x: 50, y: 250 }, r };
+    const circle8: CircleGeometry = { c: { x: 150, y: 50 }, r };
+    const circle9: CircleGeometry = { c: { x: 150, y: 100 }, r };
+    const circle10: CircleGeometry = { c: { x: 150, y: 150 }, r };
+    const circle11: CircleGeometry = { c: { x: 150, y: 200 }, r };
+    const circle12: CircleGeometry = { c: { x: 150, y: 250 }, r };
 </script>
 
 <main>

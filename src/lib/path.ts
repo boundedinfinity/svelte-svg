@@ -1,45 +1,45 @@
 import type {
-    Point,
-    Delta,
-    CubicBezierAbs,
-    CubicBezierRel,
-    CubicBezierShortcutAbs,
-    CubicBezierShortcutRel,
-    QuadraticBezierAbs,
-    QuadraticBezierRel,
-    QuadraticBezierShortcutAbs,
-    QuadraticBezierShortcutRel,
-    ArcAbs,
-    ArcRel
+    PointGeometry,
+    DeltaGeometry,
+    CubicBezierAbsGeometry,
+    CubicBezierRelGeometry,
+    CubicBezierShortcutAbsGeometry,
+    CubicBezierShortcutRelGeometry,
+    QuadraticBezierAbsGeometry,
+    QuadraticBezierRelGeometry,
+    QuadraticBezierShortcutAbsGeometry,
+    QuadraticBezierShortcutRelGeometry,
+    ArcAbsGeometry,
+    ArcRelGeometry
 } from "./types.js";
 
 // // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
 
 const m: { [symbol: string]: (x: any) => string } = {
-    M: (o: Point) => `M ${o.x},${o.y}`,
-    m: (o: Delta) => `m ${o.dx},${o.dy}`,
-    L: (o: Point) => `L ${o.x},${o.y}`,
-    l: (o: Delta) => `l ${o.dx},${o.dy}`,
+    M: (o: PointGeometry) => `M ${o.x},${o.y}`,
+    m: (o: DeltaGeometry) => `m ${o.dx},${o.dy}`,
+    L: (o: PointGeometry) => `L ${o.x},${o.y}`,
+    l: (o: DeltaGeometry) => `l ${o.dx},${o.dy}`,
     H: (x: number) => `H ${x}`,
     h: (dx: number) => `h ${dx}`,
     V: (y: number) => `V ${y}`,
     v: (dy: number) => `v ${dy}`,
     Z: () => `Z`,
     z: () => `z`,
-    C: (o: CubicBezierAbs) =>
+    C: (o: CubicBezierAbsGeometry) =>
         `C ${o.c1.x},${o.c1.y}, ${o.c2.x},${o.c2.x} ${o.e.x},${o.e.y}`,
-    c: (o: CubicBezierRel) =>
+    c: (o: CubicBezierRelGeometry) =>
         `c ${o.c1.dx},${o.c1.dy}, ${o.c2.dx},${o.c2.dx} ${o.e.dx},${o.e.dy}`,
-    S: (o: CubicBezierShortcutAbs) => `S ${o.c2.x},${o.c2.y} ${o.e.x},${o.e.y}`,
-    s: (o: CubicBezierShortcutRel) => `S ${o.c2.dx},${o.c2.dx} ${o.e.dx},${o.e.dy}`,
-    Q: (o: QuadraticBezierAbs) => `Q ${o.c1.x},${o.c1.x} ${o.e.x},${o.e.y}`,
-    q: (o: QuadraticBezierRel) => `q ${o.c1.dx},${o.c1.dx} ${o.e.dx},${o.e.dy}`,
-    T: (o: QuadraticBezierShortcutAbs) => `T ${o.e.x},${o.e.y}`,
-    t: (o: QuadraticBezierShortcutRel) => `t ${o.e.dx},${o.e.dy}`,
-    A: (o: ArcAbs) =>
+    S: (o: CubicBezierShortcutAbsGeometry) => `S ${o.c2.x},${o.c2.y} ${o.e.x},${o.e.y}`,
+    s: (o: CubicBezierShortcutRelGeometry) => `S ${o.c2.dx},${o.c2.dx} ${o.e.dx},${o.e.dy}`,
+    Q: (o: QuadraticBezierAbsGeometry) => `Q ${o.c1.x},${o.c1.x} ${o.e.x},${o.e.y}`,
+    q: (o: QuadraticBezierRelGeometry) => `q ${o.c1.dx},${o.c1.dx} ${o.e.dx},${o.e.dy}`,
+    T: (o: QuadraticBezierShortcutAbsGeometry) => `T ${o.e.x},${o.e.y}`,
+    t: (o: QuadraticBezierShortcutRelGeometry) => `t ${o.e.dx},${o.e.dy}`,
+    A: (o: ArcAbsGeometry) =>
         `A ${o.rx} ${o.ry} ${o.xAxisRotation} ${o.largeArcFlag} ${o.sweepFlag} ${o.e.x} ${o.e.y}`,
-    a: (o: ArcRel) =>
+    a: (o: ArcRelGeometry) =>
         `a ${o.rx} ${o.ry} ${o.xAxisRotation} ${o.largeArcFlag} ${o.sweepFlag} ${o.e.dx} ${o.e.dy}`,
 };
 
@@ -63,22 +63,22 @@ export class PathBuilder {
         this.commands.push({ options: options, fn: m[symbol] });
     }
 
-    M(point: Point): PathBuilder {
+    M(point: PointGeometry): PathBuilder {
         this.append("M", point);
         return this;
     }
 
-    m(delta: Delta): PathBuilder {
+    m(delta: DeltaGeometry): PathBuilder {
         this.append("m", delta);
         return this;
     }
 
-    L(point: Point): PathBuilder {
+    L(point: PointGeometry): PathBuilder {
         this.append("L", point);
         return this;
     }
 
-    l(delta: Delta): PathBuilder {
+    l(delta: DeltaGeometry): PathBuilder {
         this.append("l", delta);
         return this;
     }
@@ -113,52 +113,52 @@ export class PathBuilder {
         return this;
     }
 
-    C(options: CubicBezierAbs): PathBuilder {
+    C(options: CubicBezierAbsGeometry): PathBuilder {
         this.append("C", options);
         return this;
     }
 
-    c(options: CubicBezierRel): PathBuilder {
+    c(options: CubicBezierRelGeometry): PathBuilder {
         this.append("c", options);
         return this;
     }
 
-    S(options: CubicBezierShortcutAbs): PathBuilder {
+    S(options: CubicBezierShortcutAbsGeometry): PathBuilder {
         this.append("C", options);
         return this;
     }
 
-    s(options: CubicBezierShortcutRel): PathBuilder {
+    s(options: CubicBezierShortcutRelGeometry): PathBuilder {
         this.append("c", options);
         return this;
     }
 
-    Q(options: QuadraticBezierAbs): PathBuilder {
+    Q(options: QuadraticBezierAbsGeometry): PathBuilder {
         this.append("C", options);
         return this;
     }
 
-    q(options: QuadraticBezierRel): PathBuilder {
+    q(options: QuadraticBezierRelGeometry): PathBuilder {
         this.append("c", options);
         return this;
     }
 
-    T(options: QuadraticBezierShortcutAbs): PathBuilder {
+    T(options: QuadraticBezierShortcutAbsGeometry): PathBuilder {
         this.append("C", options);
         return this;
     }
 
-    t(options: QuadraticBezierShortcutRel): PathBuilder {
+    t(options: QuadraticBezierShortcutRelGeometry): PathBuilder {
         this.append("c", options);
         return this;
     }
 
-    A(options: ArcAbs): PathBuilder {
+    A(options: ArcAbsGeometry): PathBuilder {
         this.append("A", options);
         return this;
     }
 
-    a(options: ArcRel): PathBuilder {
+    a(options: ArcRelGeometry): PathBuilder {
         this.append("a", options);
         return this;
     }

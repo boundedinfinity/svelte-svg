@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type { CircleDescriptor } from "../types.js";
+    import type { CircleGeometry } from "../types.js";
     import { polygonVertices } from "./polygon.js";
 
-    export let circle: CircleDescriptor;
+    export let circle: CircleGeometry;
     export let vertices: number;
     export let rotate: number = 0;
 

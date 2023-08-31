@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type { LineDescriptor } from "./types.js";
+    import type { LineGeometry } from "./types.js";
 
-    export let line: LineDescriptor;
+    export let line: LineGeometry;
     export let style: string = ""
     export let debug = false;
 

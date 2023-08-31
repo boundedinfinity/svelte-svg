@@ -1,15 +1,16 @@
+import type { PointGeometry } from "./index.js";
+
 import type {
-    CircleDescriptor,
-    LineDescriptor,
-    Point,
-    ViewBox,
+    CircleGeometry,
+    LineGeometry,
+    ViewBoxGeometry,
     RotationDirection,
 } from "./types.js";
 import { degToRad } from "./util.js";
 
-export const DEFAULT_CIRCLE_STROKE_WIDTH = 3
+export const DEFAULT_CIRCLE_STROKE_WIDTH = 3;
 
-export function circleViewBox(circle: CircleDescriptor): ViewBox {
+export function circleViewBox(circle: CircleGeometry): ViewBoxGeometry {
     const strokeWidth = circle.stroke || DEFAULT_CIRCLE_STROKE_WIDTH;
     const length: number = circle.r * 2 + strokeWidth;
     const half = length / 2;
@@ -34,10 +35,10 @@ export function circleAngle(
 }
 
 export function circleCircumferencePoint(
-    circle: CircleDescriptor,
+    circle: CircleGeometry,
     theta: number = 0,
     direction: RotationDirection = "counter-clockwise"
-): Point {
+): PointGeometry {
     const realTheta = circleAngle(theta, direction);
     const radians = degToRad(realTheta);
 
@@ -48,10 +49,10 @@ export function circleCircumferencePoint(
 }
 
 export function circleCircumferenceLine(
-    circle: CircleDescriptor,
+    circle: CircleGeometry,
     theta: number = 0,
     direction: RotationDirection = "counter-clockwise"
-): LineDescriptor {
+): LineGeometry {
     return {
         p1: circle.c,
         p2: circleCircumferencePoint(circle, theta, direction),

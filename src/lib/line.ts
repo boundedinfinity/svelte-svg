@@ -1,8 +1,8 @@
-import type { LineDescriptor, Point, ViewBox } from "./types.js";
+import type { LineGeometry, PointGeometry, ViewBoxGeometry } from "./types.js";
 
 export const DEFAULT_LINE_STROKE_WIDTH = 3;
 
-export function lineViewBox(line: LineDescriptor): ViewBox {
+export function lineViewBox(line: LineGeometry): ViewBoxGeometry {
     const strokeWidth = line.stroke || DEFAULT_LINE_STROKE_WIDTH;
     return {
         minX: Math.min(line.p1.x, line.p2.x) - strokeWidth / 2,
@@ -13,12 +13,12 @@ export function lineViewBox(line: LineDescriptor): ViewBox {
 }
 
 // https://www.mathsisfun.com/algebra/line-midpoint.html
-export function lineMidPoint(line: LineDescriptor): Point {
+export function lineMidPoint(line: LineGeometry): PointGeometry {
     return linePoint(line, 50);
 }
 
 // https://www.mathsisfun.com/algebra/line-midpoint.html
-export function linePoint(line: LineDescriptor, percentage: number): Point {
+export function linePoint(line: LineGeometry, percentage: number): PointGeometry {
     return {
         x: ((line.p1.x + line.p2.x) * percentage) / 100,
         y: ((line.p1.y + line.p2.y) * percentage) / 100,
@@ -26,6 +26,6 @@ export function linePoint(line: LineDescriptor, percentage: number): Point {
 }
 
 // https://www.mathsisfun.com/geometry/slope.html
-export function lineSlope(line: LineDescriptor): number {
+export function lineSlope(line: LineGeometry): number {
     return (line.p1.x - line.p2.x) / (line.p2.y - line.p2.y);
 }

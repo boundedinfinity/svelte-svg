@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type { CircleDescriptor } from "./types.js";
+    import type { CircleGeometry } from "./types.js";
     import {addStyle} from './util.js'
 
-    export let circle: CircleDescriptor;
+    export let circle: CircleGeometry;
     export let debug = false;
     export let style = "";
 

@@ -6,13 +6,13 @@
         CircleCircumPoint,
         CircleRadiusSlice,
     } from "$lib/index.js";
-    import type { CircleDescriptor } from "$lib/types.js";
+    import type { CircleGeometry } from "$lib/index.js";
     const debug = true;
 
-    const c1: CircleDescriptor = { c: { x: 45, y: 45 }, r: 30 };
-    const c2: CircleDescriptor = { c: { x: 150, y: 150 }, r: 30 };
-    const c3: CircleDescriptor = { c: { x: 45, y: 150 }, r: 30 };
-    const c4: CircleDescriptor = { c: { x: 45, y: 250 }, r: 40 };
+    const c1: CircleGeometry = { c: { x: 45, y: 45 }, r: 30 };
+    const c2: CircleGeometry = { c: { x: 150, y: 150 }, r: 30 };
+    const c3: CircleGeometry = { c: { x: 45, y: 150 }, r: 30 };
+    const c4: CircleGeometry = { c: { x: 45, y: 250 }, r: 40 };
 </script>
 
 <main>

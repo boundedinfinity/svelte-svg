@@ -1,11 +1,12 @@
 <script lang="ts">
-    import type { CircleDescriptor } from "./types.js";
+    import type { CircleGeometry } from "./types.js";
     import { circleCircumferencePoint } from "./circle.js";
     import { pathBuilder } from "./path.js";
 
-    export let circle: CircleDescriptor;
+    export let circle: CircleGeometry;
     export let theta1 = 0;
     export let theta2 = 90;
+    export let style = ""
     export let debug = false;
 
     const p1 = circleCircumferencePoint(circle, theta1);
@@ -30,7 +31,7 @@
     if (debug) console.log(path);
 </script>
 
-<path d={`${path}`} />
+<path d={`${path}`} {style} />
 
 <style>
     path {

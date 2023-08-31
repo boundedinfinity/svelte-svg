@@ -1,8 +1,8 @@
 <script lang="ts">
-    import type { LineDescriptor } from "./types.js";
+    import type { LineGeometry } from "./types.js";
     import LinePoint from "./LinePoint.svelte";
 
-    export let line: LineDescriptor;
+    export let line: LineGeometry;
     export let debug = false;
 </script>
 
