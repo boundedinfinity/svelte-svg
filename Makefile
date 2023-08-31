@@ -30,4 +30,8 @@ commit:
 
 publish:
 	@make package
+	git add .
+	git commit -m "updates"
+	bump2version patch
+	git push origin master
 	npm publish
