@@ -1,21 +1,27 @@
 <script lang="ts">
-    import type { CircleGeometry } from "./index.js";
-    import { DEFAULT_CIRCLE_STROKE_WIDTH } from "./circle.js";
+    import type { CircleAttributes, CircleGeometry } from "./index.js";
+    import { CIRCLE_DEFAULTS } from "./circle.js";
+    import { styles } from "./util.js";
 
     export let circle: CircleGeometry;
-    export let style: string = "";
+    export let attrs: CircleAttributes = CIRCLE_DEFAULTS;
     export let debug: boolean = false;
 
+    const style = styles({
+        ...CIRCLE_DEFAULTS,
+        ...circle.attrs,
+        ...attrs,
+    });
+
     if (debug) console.log(circle);
+    if (debug) console.log({
+        ...CIRCLE_DEFAULTS,
+        ...circle.attrs,
+        ...attrs,
+    });
 </script>
 
-<circle
-    cx={circle.c.x}
-    cy={circle.c.y}
-    r={circle.r}
-    stroke-width={circle.stroke || DEFAULT_CIRCLE_STROKE_WIDTH}
-    {style}
-/>
+<circle cx={circle.c.x} cy={circle.c.y} r={circle.r} {style} />
 
 <style>
     circle {
@@ -25,6 +31,7 @@
         visibility: var(--visibility, visible);
 
         stroke: var(--stroke, black);
+        stroke-width: var(--stroke-width, 3);
         stroke-opacity: var(--stroke-opacity, 1);
         stroke-dasharray: var(--stroke-dasharray, 0);
         stroke-dashoffset: var(--stroke-dashoffset, none);

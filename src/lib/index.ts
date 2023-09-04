@@ -7,6 +7,7 @@ export type {
     LineCap,
     LineGeometry,
     CircleGeometry,
+    CircleAttributes,
     RotationDirection,
     ArcAbsGeometry,
     ArcRelGeometry,

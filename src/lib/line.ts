@@ -1,9 +1,23 @@
-import type { LineGeometry, PointGeometry, ViewBoxGeometry } from "./types.js";
+import type { LineGeometry, PointGeometry, ViewBoxGeometry, LineAttributes } from "./types.js";
 
-export const DEFAULT_LINE_STROKE_WIDTH = 3;
+export const LINE_DEFAULTS: LineAttributes = {
+    display: "inline",
+    fill: "black",
+    fillOpacity: 1,
+    stroke: "black",
+    strokeDasharray: 0,
+    strokeDashoffset: "none",
+    strokeLinecap: "butt",
+    strokeLinejoin: "miter",
+    strokeMiterlimit: 4,
+    strokeOpacity: 1,
+    strokeWidth: 3,
+    visibility: "visible",
+};
 
 export function lineViewBox(line: LineGeometry): ViewBoxGeometry {
-    const strokeWidth = line.stroke || DEFAULT_LINE_STROKE_WIDTH;
+    const strokeWidth = Number(line.attrs?.strokeWidth || LINE_DEFAULTS.stroke!);
+    
     return {
         minX: Math.min(line.p1.x, line.p2.x) - strokeWidth / 2,
         minY: Math.min(line.p1.y, line.p2.y) - strokeWidth / 2,

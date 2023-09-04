@@ -1,22 +1,22 @@
 <script lang="ts">
     import type { LineGeometry } from "./index.js";
-    import { DEFAULT_LINE_STROKE_WIDTH } from "./line.js";
+    import { LINE_DEFAULTS } from "./line.js";
+    import { styles } from "./util.js";
 
     export let line: LineGeometry;
-    export let style: string = "";
-    export let debug = false;
+    export let attrs = LINE_DEFAULTS;
+    export let debug: boolean = false;
+
+    const style = styles({
+        ...LINE_DEFAULTS,
+        ...line.attrs,
+        ...attrs,
+    });
 
     if (debug) console.log(line);
 </script>
 
-<line
-    x1={line.p1.x}
-    y1={line.p1.y}
-    x2={line.p2.x}
-    y2={line.p2.y}
-    stroke-width={line.stroke || DEFAULT_LINE_STROKE_WIDTH}
-    {style}
-/>
+<line x1={line.p1.x} y1={line.p1.y} x2={line.p2.x} y2={line.p2.y} {style} />
 
 <style>
     line {

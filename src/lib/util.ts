@@ -20,13 +20,18 @@ export function percentageDec(size: number, percentage: number): number {
     return size - size * percentage;
 }
 
-export function addStyle(
-    current: string,
-    name: string,
-    value?: string | number
-): string {
-    if (value) current += `--${name}: ${value};`;
-    return current;
+export function styles(props: { [key: string]: any }) {
+    return Object.entries(props)
+        .filter(([_, val]) => val !== undefined)
+        .map(([key, val]) => [
+            key
+                .split(/(?=[A-Z])/)
+                .join("-")
+                .toLocaleLowerCase(),
+            val,
+        ])
+        .map(([key, val]) => `--${key}: ${val};`)
+        .join(" ");
 }
 
 export function debugDump(debug: boolean, value: any) {

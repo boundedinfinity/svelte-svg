@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Line } from "./index.js";
     import { lineViewBox } from "./line.js";
-    import { viewBoxToString, addStyle } from "./util.js";
+    import { viewBoxToString } from "./util.js";
     import type { LineGeometry, PointGeometry } from "./types.js";
 
     export let p1: PointGeometry;
@@ -10,7 +10,7 @@
 
     const line: LineGeometry = { p1, p2 };
     const viewBox = lineViewBox({ p1, p2 });
-    const style = addStyle("", "fill", "black");
+    export let fill = "black";
 
     if (debug) console.log(viewBox);
 </script>
@@ -21,5 +21,5 @@
     height={viewBox.height}
     viewBox={viewBoxToString(viewBox)}
 >
-    <Line {line} {style} />
+    <Line {line} {fill} />
 </svg>

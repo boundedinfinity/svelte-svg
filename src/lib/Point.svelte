@@ -2,21 +2,24 @@
     import Circle from "./Circle.svelte";
     import type { CircleGeometry, PointGeometry } from "./types.js";
     import { percentageInc, debugDump } from "./util.js";
-    import { DEFAULT_CIRCLE_STROKE_WIDTH } from "./point.js";
+    import { POINT_DEFAULTS } from "./point.js";
 
     export let point: PointGeometry;
+    export let attrs = POINT_DEFAULTS;
     export let offset: number = 0.05;
-    export let style: string = "";
-    export let debug = false;
+    export let debug: boolean = false;
 
-    const strokeWidth = point.stroke || DEFAULT_CIRCLE_STROKE_WIDTH;
+    const strokeWidth =
+        attrs.strokeWidth ||
+        point.attrs?.strokeWidth ||
+        POINT_DEFAULTS.strokeWidth!;
 
     const circle: CircleGeometry = {
         c: point,
         r: percentageInc(strokeWidth, offset),
     };
 
-    debugDump(debug, point)
+    debugDump(debug, point);
 </script>
 
-<Circle {circle} {debug} {style} --fill="black" />
+<Circle {circle} {debug} {attrs} />

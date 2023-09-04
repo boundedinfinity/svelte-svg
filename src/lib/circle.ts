@@ -2,16 +2,30 @@ import type { PointGeometry } from "./index.js";
 
 import type {
     CircleGeometry,
+    CircleAttributes,
     LineGeometry,
     ViewBoxGeometry,
     RotationDirection,
 } from "./types.js";
 import { degToRad } from "./util.js";
 
-export const DEFAULT_CIRCLE_STROKE_WIDTH = 3;
+export const CIRCLE_DEFAULTS: CircleAttributes = {
+    display: "inline",
+    fill: "black",
+    fillOpacity: 1,
+    stroke: "black",
+    strokeDasharray: 0,
+    strokeDashoffset: "none",
+    strokeLinecap: "butt",
+    strokeLinejoin: "miter",
+    strokeMiterlimit: 4,
+    strokeOpacity: 1,
+    strokeWidth: 3,
+    visibility: "visible",
+};
 
 export function circleViewBox(circle: CircleGeometry): ViewBoxGeometry {
-    const strokeWidth = circle.stroke || DEFAULT_CIRCLE_STROKE_WIDTH;
+    const strokeWidth = circle.attrs?.strokeWidth || CIRCLE_DEFAULTS.strokeWidth!;
     const length: number = circle.r * 2 + strokeWidth;
     const half = length / 2;
 
