@@ -24,51 +24,67 @@ export const CIRCLE_DEFAULTS: CircleAttributes = {
     visibility: "visible",
 };
 
-export function circleViewBox(circle: CircleGeometry): ViewBoxGeometry {
-    const strokeWidth = circle.attrs?.strokeWidth || CIRCLE_DEFAULTS.strokeWidth!;
-    const length: number = circle.r * 2 + strokeWidth;
-    const half = length / 2;
+class CircleUtils {
+    constructor() {}
 
-    return {
-        minX: circle.c.x - half,
-        minY: circle.c.x - half,
-        width: length,
-        height: length,
-    };
-}
+    viewBox(circle: CircleGeometry): ViewBoxGeometry {
+        const strokeWidth =
+            circle.attrs?.strokeWidth || CIRCLE_DEFAULTS.strokeWidth!;
+        const length: number = circle.r * 2 + strokeWidth;
+        const half = length / 2;
 
-export function circleAngle(
-    degrees: number,
-    direction: RotationDirection = "counter-clockwise"
-): number {
-    if (direction == "counter-clockwise") {
-        return 360 - degrees;
-    } else {
-        return degrees;
+        return {
+            minX: circle.c.x - half,
+            minY: circle.c.x - half,
+            width: length,
+            height: length,
+        };
+    }
+
+    angle(
+        degrees: number,
+        direction: RotationDirection = "counter-clockwise"
+    ): number {
+        if (direction == "counter-clockwise") {
+            return 360 - degrees;
+        } else {
+            return degrees;
+        }
+    }
+
+    pointOnCircumference(
+        circle: CircleGeometry,
+        theta: number = 0,
+        direction: RotationDirection = "counter-clockwise"
+    ): PointGeometry {
+        const realTheta = this.angle(theta, direction);
+        const radians = degToRad(realTheta);
+
+        return {
+            x: circle.r * Math.cos(radians) + circle.c.x,
+            y: circle.r * Math.sin(radians) + circle.c.y,
+        };
+    }
+
+    lineToCircumference(
+        circle: CircleGeometry,
+        theta: number = 0,
+        direction: RotationDirection = "counter-clockwise"
+    ): LineGeometry {
+        return {
+            p1: circle.c,
+            p2: this.pointOnCircumference(circle, theta, direction),
+        };
+    }
+
+    yCoordinate(circle: CircleGeometry, x: number): number {
+        const h = circle.c.x;
+        const k = -circle.c.y;
+        const r = circle.r;
+        const y = k + Math.sqrt(Math.pow(r, 2) - Math.pow(x - h, 2));
+
+        return -y;
     }
 }
 
-export function circleCircumferencePoint(
-    circle: CircleGeometry,
-    theta: number = 0,
-    direction: RotationDirection = "counter-clockwise"
-): PointGeometry {
-    const realTheta = circleAngle(theta, direction);
-    const radians = degToRad(realTheta);
-
-    return {
-        x: circle.r * Math.cos(radians) + circle.c.x,
-        y: circle.r * Math.sin(radians) + circle.c.y,
-    };
-}
-
-export function circleCircumferenceLine(
-    circle: CircleGeometry,
-    theta: number = 0,
-    direction: RotationDirection = "counter-clockwise"
-): LineGeometry {
-    return {
-        p1: circle.c,
-        p2: circleCircumferencePoint(circle, theta, direction),
-    };
-}
+export const circleUtils = new CircleUtils();

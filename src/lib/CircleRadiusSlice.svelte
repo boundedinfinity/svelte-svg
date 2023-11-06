@@ -1,17 +1,17 @@
 <script lang="ts">
     import type { CircleGeometry, CircleAttributes } from "./types.js";
-    import { circleCircumferencePoint, CIRCLE_DEFAULTS } from "./circle.js";
+    import { circleUtils, CIRCLE_DEFAULTS } from "./circle.js";
     import { pathBuilder } from "./path.js";
     import { debugDump, styles } from "./util.js";
 
     export let circle: CircleGeometry;
-    export let attrs: CircleAttributes = CIRCLE_DEFAULTS;
+    export let attrs: Partial<CircleAttributes> = {};
     export let theta1 = 0;
     export let theta2 = 90;
     export let debug: boolean = false;
 
-    const p1 = circleCircumferencePoint(circle, theta1);
-    const p2 = circleCircumferencePoint(circle, theta2);
+    const p1 = circleUtils.pointOnCircumference(circle, theta1);
+    const p2 = circleUtils.pointOnCircumference(circle, theta2);
     const largeArcFlag = Math.abs(theta1 - theta2) < 180 ? 0 : 1;
     const sweepFlag = theta1 < theta2 ? 0 : 1;
 

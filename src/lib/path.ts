@@ -52,7 +52,7 @@ export function pathBuilder(): PathBuilder {
     return new PathBuilder([])
 }
 
-export class PathBuilder {
+class PathBuilder {
     constructor(public commands: Command[]) {}
 
     build(): string {

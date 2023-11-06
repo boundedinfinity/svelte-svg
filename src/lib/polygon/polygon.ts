@@ -1,6 +1,6 @@
 import type { CircleGeometry, PointGeometry } from "../types.js";
-import { circleCircumferencePoint } from "../circle.js";
-import { pathBuilder} from '../path.js'
+import { circleUtils } from "../circle.js";
+import { pathBuilder } from "../path.js";
 
 export function polygonVertices(
     circle: CircleGeometry,
@@ -10,30 +10,27 @@ export function polygonVertices(
     const step = 360 / vertices;
 
     for (let theta = step; theta <= 360; theta += step) {
-        points.push(circleCircumferencePoint(circle, theta));
+        points.push(circleUtils.pointOnCircumference(circle, theta));
     }
 
     return points;
 }
 
+export function polygonPath(circle: CircleGeometry, vertices: number): string {
+    const points = polygonVertices(circle, vertices);
+    const builder = pathBuilder();
 
-export function polygonPath(circle: CircleGeometry,
-    vertices: number) : string {
-        const points = polygonVertices(circle, vertices)
-        const builder = pathBuilder()
+    for (let i = 0; i < points.length; i++) {
+        const point = points[i];
 
-        for(let i = 0; i < points.length; i++) {
-            const point = points[i]
-
-            if(i == 0) {
-                builder.M(point)
-            } else {
-                builder.L(point)
-            }
+        if (i == 0) {
+            builder.M(point);
+        } else {
+            builder.L(point);
         }
-
-        builder.Z()
-        
-
-        return builder.build()
     }
+
+    builder.Z();
+
+    return builder.build();
+}

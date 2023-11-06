@@ -1,23 +1,26 @@
+// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Presentation
+interface PresentationAttributes {
+    fill: string;
+    fillOpacity: string | number;
+    display: string;
+    visibility: string;
+    stroke: string;
+    strokeWidth: number;
+    strokeOpacity: string | number;
+    strokeDasharray: string | number;
+    strokeDashoffset: string;
+    strokeLinecap: string;
+    strokeLinejoin: string;
+    strokeMiterlimit: number;
+}
+
 export interface PointGeometry {
     x: number;
     y: number;
     attrs?: PointAttributes;
 }
 
-export interface PointAttributes {
-    fill?: string;
-    fillOpacity?: string | number;
-    display?: string;
-    visibility?: string;
-    stroke?: string;
-    strokeWidth?: number;
-    strokeOpacity?: string | number;
-    strokeDasharray?: string | number;
-    strokeDashoffset?: string;
-    strokeLinecap?: string;
-    strokeLinejoin?: string;
-    strokeMiterlimit?: number;
-}
+export interface PointAttributes extends PresentationAttributes {}
 
 export interface DeltaGeometry {
     dx: number;
@@ -36,46 +39,27 @@ export interface ViewBoxGeometry {
 export interface CircleGeometry {
     c: PointGeometry;
     r: number;
-    attrs?: CircleAttributes;
+    attrs?: Partial<CircleAttributes>;
 }
 
-export interface CircleAttributes {
-    fill?: string;
-    fillOpacity?: string | number;
-    display?: string;
-    visibility?: string;
-    stroke?: string;
-    strokeWidth?: number;
-    strokeOpacity?: string | number;
-    strokeDasharray?: string | number;
-    strokeDashoffset?: string;
-    strokeLinecap?: string;
-    strokeLinejoin?: string;
-    strokeMiterlimit?: number;
-}
+export interface CircleAttributes extends PresentationAttributes {}
 
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap
 export interface LineGeometry {
     p1: PointGeometry;
     p2: PointGeometry;
-    attrs?: LineAttributes;
+    attrs?: Partial<LineAttributes>;
 }
 
-export interface LineAttributes {
-    fill?: string;
-    fillOpacity?: string | number;
-    display?: string;
-    visibility?: string;
-    stroke?: string;
-    strokeWidth?: number;
-    strokeOpacity?: string | number;
-    strokeDasharray?: string | number;
-    strokeDashoffset?: string;
-    strokeLinecap?: string;
-    strokeLinejoin?: string;
-    strokeMiterlimit?: number;
+export interface LineSlopIntercept {
+    // y = mx + b
+    m: number;
+    b: number;
+    attrs?: Partial<LineAttributes>;
 }
+
+export interface LineAttributes extends PresentationAttributes {}
 
 export type RotationDirection = "clockwise" | "counter-clockwise";
 export type LineCap = "butt" | "round" | "square" | "line" | "point" | "arrow";

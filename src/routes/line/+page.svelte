@@ -25,9 +25,9 @@
             >
                 <Line line={l1} />
                 <Line line={l2} />
-                <LinePoint line={l1} percentage={30} />
-                <LineMidPoint line={l1} />
-                <LinePoint line={l1} percentage={65} />
+                <LinePoint line={l1} percentage={20} />
+                <!-- <LineMidPoint line={l1} /> -->
+                <LinePoint line={l1} percentage={80} />
             </svg>
         </div>
     </section>
