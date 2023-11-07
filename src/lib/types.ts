@@ -52,7 +52,7 @@ export interface LineGeometry {
     attrs?: Partial<LineAttributes>;
 }
 
-export interface LineSlopIntercept {
+export interface LineSlopeIntercept {
     // y = mx + b
     m: number;
     b: number;

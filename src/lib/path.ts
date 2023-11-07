@@ -10,8 +10,10 @@ import type {
     QuadraticBezierShortcutAbsGeometry,
     QuadraticBezierShortcutRelGeometry,
     ArcAbsGeometry,
-    ArcRelGeometry
+    ArcRelGeometry,
 } from "./types.js";
+
+import { pointUtils } from "./point.js";
 
 // // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
@@ -31,10 +33,14 @@ const m: { [symbol: string]: (x: any) => string } = {
         `C ${o.c1.x},${o.c1.y}, ${o.c2.x},${o.c2.x} ${o.e.x},${o.e.y}`,
     c: (o: CubicBezierRelGeometry) =>
         `c ${o.c1.dx},${o.c1.dy}, ${o.c2.dx},${o.c2.dx} ${o.e.dx},${o.e.dy}`,
-    S: (o: CubicBezierShortcutAbsGeometry) => `S ${o.c2.x},${o.c2.y} ${o.e.x},${o.e.y}`,
-    s: (o: CubicBezierShortcutRelGeometry) => `S ${o.c2.dx},${o.c2.dx} ${o.e.dx},${o.e.dy}`,
-    Q: (o: QuadraticBezierAbsGeometry) => `Q ${o.c1.x},${o.c1.x} ${o.e.x},${o.e.y}`,
-    q: (o: QuadraticBezierRelGeometry) => `q ${o.c1.dx},${o.c1.dx} ${o.e.dx},${o.e.dy}`,
+    S: (o: CubicBezierShortcutAbsGeometry) =>
+        `S ${o.c2.x},${o.c2.y} ${o.e.x},${o.e.y}`,
+    s: (o: CubicBezierShortcutRelGeometry) =>
+        `S ${o.c2.dx},${o.c2.dx} ${o.e.dx},${o.e.dy}`,
+    Q: (o: QuadraticBezierAbsGeometry) =>
+        `Q ${o.c1.x},${o.c1.x} ${o.e.x},${o.e.y}`,
+    q: (o: QuadraticBezierRelGeometry) =>
+        `q ${o.c1.dx},${o.c1.dx} ${o.e.dx},${o.e.dy}`,
     T: (o: QuadraticBezierShortcutAbsGeometry) => `T ${o.e.x},${o.e.y}`,
     t: (o: QuadraticBezierShortcutRelGeometry) => `t ${o.e.dx},${o.e.dy}`,
     A: (o: ArcAbsGeometry) =>
@@ -49,7 +55,7 @@ interface Command {
 }
 
 export function pathBuilder(): PathBuilder {
-    return new PathBuilder([])
+    return new PathBuilder([]);
 }
 
 class PathBuilder {
@@ -68,8 +74,8 @@ class PathBuilder {
         return this;
     }
 
-    m(delta: DeltaGeometry): PathBuilder {
-        this.append("m", delta);
+    m(delta: Partial<DeltaGeometry>): PathBuilder {
+        this.append("m", pointUtils.safe(delta));
         return this;
     }
 

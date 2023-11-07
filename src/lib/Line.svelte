@@ -1,13 +1,13 @@
 <script lang="ts">
     import type { LineGeometry, LineAttributes } from "./types.js";
     import { LINE_DEFAULTS } from "./line.js";
-    import { styles } from "./util.js";
+    import { utils } from "./util.js";
 
     export let line: LineGeometry;
     export let attrs: Partial<LineAttributes> = {};
     export let debug: boolean = false;
 
-    const style = styles({
+    const style = utils.styles({
         ...LINE_DEFAULTS,
         ...line.attrs,
         ...attrs,

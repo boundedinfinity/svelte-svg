@@ -2,19 +2,13 @@
     import { Line, LineSvg, LinePoint, LineMidPoint } from "$lib/index.js";
     import type { LineGeometry } from "$lib/types.js";
     const debug = true;
-    const svgAttrs = { width: 300, height: 200, viewBox: "0 0 {300} {200}" };
+    const svgAttrs = { width: 300, height: 200, viewBox: "0 0 300 200" };
 
     const l1: LineGeometry = { a: { x: 20, y: 20 }, b: { x: 150, y: 150 } };
     const l2: LineGeometry = { a: { x: 70, y: 20 }, b: { x: 20, y: 70 } };
 </script>
 
 <main>
-    <section>
-        <h2>LineSvg</h2>
-        <div>
-            <LineSvg {debug} line={l1} />
-        </div>
-    </section>
     <section>
         <h2>Line + LineMidPoint</h2>
         <div>
@@ -24,6 +18,7 @@
             </svg>
         </div>
     </section>
+    
     <section>
         <h2>Line + LinePoint</h2>
         <div>
@@ -35,7 +30,7 @@
             </svg>
         </div>
     </section>
-
+    
     <section>
         <h2>Line + LinePoint</h2>
         <div>
@@ -47,6 +42,13 @@
             </svg>
         </div>
     </section>
+    
+    <section>
+        <h2>LineSvg</h2>
+        <div>
+            <LineSvg {debug} line={l1} />
+        </div>
+    </section>    
 </main>
 
 <style>

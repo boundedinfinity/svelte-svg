@@ -1,39 +1,53 @@
 import type { ViewBoxGeometry } from "./types.js";
 
-export function viewBoxToString(vb: ViewBoxGeometry): string {
-    return `${vb.minX} ${vb.minY} ${vb.width} ${vb.height}`;
-}
+export const utils = {
+    viewBoxToString: function (vb: ViewBoxGeometry): string {
+        return `${vb.minX} ${vb.minY} ${vb.width} ${vb.height}`;
+    },
 
-export function degToRad(degrees: number): number {
-    return (degrees * Math.PI) / 180;
-}
+    styles: function (props: { [key: string]: any }) {
+        return Object.entries(props)
+            .filter(([_, val]) => val !== undefined)
+            .map(([key, val]) => [
+                key
+                    .split(/(?=[A-Z])/)
+                    .join("-")
+                    .toLocaleLowerCase(),
+                val,
+            ])
+            .map(([key, val]) => `--${key}: ${val};`)
+            .join(" ");
+    },
 
-export function radToDeg(radians: number): number {
-    return (radians * 180) / Math.PI;
-}
+    debugDump: function (debug: boolean, value: any) {
+        if (debug) JSON.stringify(value, null, " ".repeat(4));
+    },
 
-export function percentageInc(size: number, percentage: number): number {
-    return size + size * percentage;
-}
+    math: {
+        degToRad: function (degrees: number): number {
+            return (degrees * Math.PI) / 180;
+        },
+        radToDeg: function (radians: number): number {
+            return (radians * 180) / Math.PI;
+        },
+        pythagoream: function (a: number, b: number): [number, number] {
+            const r = Math.sqrt(Math.pow(a, 2) - Math.pow(b, 2));
+            return [r, -r];
+        },
+    },
 
-export function percentageDec(size: number, percentage: number): number {
-    return size - size * percentage;
-}
-
-export function styles(props: { [key: string]: any }) {
-    return Object.entries(props)
-        .filter(([_, val]) => val !== undefined)
-        .map(([key, val]) => [
-            key
-                .split(/(?=[A-Z])/)
-                .join("-")
-                .toLocaleLowerCase(),
-            val,
-        ])
-        .map(([key, val]) => `--${key}: ${val};`)
-        .join(" ");
-}
-
-export function debugDump(debug: boolean, value: any) {
-    if (debug) JSON.stringify(value, null, " ".repeat(4));
-}
+    percentage: {
+        of1: function (n: number, p: number): number {
+            return n * p;
+        },
+        of100: function (this, n: number, p: number): number {
+            return this.of1(n, p / 100);
+        },
+        incBy: function (this, n: number, p: number): number {
+            return n + this.of100(n, p);
+        },
+        decBy: function (this, n: number, p: number): number {
+            return n - this.of100(n, p);
+        },
+    },
+};

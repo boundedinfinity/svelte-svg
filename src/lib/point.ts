@@ -1,4 +1,4 @@
-import type { PointGeometry, PointAttributes } from "./types.js";
+import type { PointGeometry, PointAttributes, DeltaGeometry } from "./types.js";
 
 export const POINT_DEFAULTS: PointAttributes = {
     display: "inline",
@@ -16,15 +16,21 @@ export const POINT_DEFAULTS: PointAttributes = {
 };
 
 class PointUtils {
-    translate(p: PointGeometry, dx: number, dy: number): PointGeometry {
+    safe(delta: Partial<DeltaGeometry>): DeltaGeometry {
         return {
-            x: p.x + dx,
-            y: p.y + dy,
+            dx: delta.dx || 0,
+            dy: delta.dy || 0,
+        };
+    }
+    translate(p: PointGeometry, delta: Partial<DeltaGeometry>): PointGeometry {
+        return {
+            x: p.x + (delta.dx ?? 0),
+            y: p.y + (delta.dy ?? 0),
             attrs: { ...p.attrs },
         };
     }
 
-    delta(a: PointGeometry, b: PointGeometry): { dx: number; dy: number } {
+    delta(a: PointGeometry, b: PointGeometry): DeltaGeometry {
         return {
             dx: b.x - a.x,
             dy: b.y - a.y,

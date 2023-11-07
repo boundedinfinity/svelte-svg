@@ -3,9 +3,11 @@ import type {
     PointGeometry,
     ViewBoxGeometry,
     LineAttributes,
-    LineSlopIntercept as LineSlopeIntercept,
+    DeltaGeometry,
+    LineSlopeIntercept,
 } from "./types.js";
 
+import { utils } from "./util.js";
 import { pointUtils } from "./point.js";
 
 export const LINE_DEFAULTS: LineAttributes = {
@@ -51,7 +53,7 @@ class LineUtils {
 
     viewBox(line: LineGeometry): ViewBoxGeometry {
         const strokeWidth = Number(
-            line.attrs?.strokeWidth || LINE_DEFAULTS.stroke!
+            line.attrs?.strokeWidth || LINE_DEFAULTS.strokeWidth
         );
 
         return {
@@ -94,10 +96,10 @@ class LineUtils {
         return dy / dx;
     }
 
-    translate(line: LineGeometry, dx: number, dy: number): LineGeometry {
+    translate(line: LineGeometry, delta: Partial<DeltaGeometry>): LineGeometry {
         const next: LineGeometry = { ...line };
-        next.a = pointUtils.translate(line.a, dx, dy);
-        next.b = pointUtils.translate(line.b, dx, dy);
+        next.a = pointUtils.translate(line.a, delta);
+        next.b = pointUtils.translate(line.b, delta);
         return next;
     }
 }

@@ -16,4 +16,4 @@
     const point = circleUtils.pointOnCircumference(circle, theta, direction);
 </script>
 
-<Point {point} {debug} {...attrs} />
+<Point {point} {debug} attrs={{...attrs}} />

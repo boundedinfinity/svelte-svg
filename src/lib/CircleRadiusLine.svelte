@@ -16,4 +16,4 @@
     const line = circleUtils.lineToCircumference(circle, theta, direction);
 </script>
 
-<Line {line} {debug} {...attrs} />
+<Line {line} {debug} attrs={{ ...attrs }} />

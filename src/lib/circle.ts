@@ -6,9 +6,10 @@ import type {
     LineGeometry,
     ViewBoxGeometry,
     RotationDirection,
+    DeltaGeometry,
 } from "./types.js";
 
-import { degToRad } from "./util.js";
+import { utils } from "./util.js";
 import { pointUtils } from "./point.js";
 
 export const CIRCLE_DEFAULTS: CircleAttributes = {
@@ -60,7 +61,7 @@ class CircleUtils {
         direction: RotationDirection = "counter-clockwise"
     ): PointGeometry {
         const realTheta = this.angle(theta, direction);
-        const radians = degToRad(realTheta);
+        const radians = utils.math.degToRad(realTheta);
 
         return {
             x: circle.r * Math.cos(radians) + circle.c.x,
@@ -83,13 +84,16 @@ class CircleUtils {
         const h = circle.c.x;
         const k = circle.c.y;
         const r = circle.r;
-        const s = Math.sqrt(Math.pow(r, 2) - Math.pow(x - h, 2))
-        return [k + s, k - s];
+        const s = utils.math.pythagoream(r, x - h);
+        return [k + s[0], k + s[1]];
     }
 
-    translate(circle: CircleGeometry, dx: number, dy: number): CircleGeometry {
+    translate(
+        circle: CircleGeometry,
+        delta: Partial<DeltaGeometry>
+    ): CircleGeometry {
         const next: CircleGeometry = { ...circle };
-        next.c = pointUtils.translate(circle.c, dx, dy);
+        next.c = pointUtils.translate(circle.c, delta);
         return next;
     }
 }

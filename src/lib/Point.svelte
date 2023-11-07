@@ -5,25 +5,26 @@
         PointGeometry,
         PointAttributes,
     } from "./types.js";
-    import { percentageInc, debugDump } from "./util.js";
+    import { utils } from "./util.js";
     import { POINT_DEFAULTS } from "./point.js";
 
     export let point: PointGeometry;
-    export let attrs: Partial<PointAttributes> = POINT_DEFAULTS;
+    export let attrs: Partial<PointAttributes> = {};
     export let offset: number = 0.05;
     export let debug: boolean = false;
 
-    const strokeWidth =
-        attrs.strokeWidth ||
-        point.attrs?.strokeWidth ||
-        POINT_DEFAULTS.strokeWidth!;
+    const cattrs: PointAttributes = {
+        ...POINT_DEFAULTS,
+        ...point.attrs,
+        ...attrs,
+    };
 
     const circle: CircleGeometry = {
         c: point,
-        r: percentageInc(strokeWidth, offset),
+        r: utils.percentage.incBy(cattrs.strokeWidth, offset),
     };
 
-    debugDump(debug, point);
+    utils.debugDump(debug, point);
 </script>
 
-<Circle {circle} {debug} {...attrs} />
+<Circle {circle} {debug} attrs={{ ...cattrs }} />

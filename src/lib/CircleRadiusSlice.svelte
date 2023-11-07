@@ -2,7 +2,7 @@
     import type { CircleGeometry, CircleAttributes } from "./types.js";
     import { circleUtils, CIRCLE_DEFAULTS } from "./circle.js";
     import { pathBuilder } from "./path.js";
-    import { debugDump, styles } from "./util.js";
+    import { utils } from "./util.js";
 
     export let circle: CircleGeometry;
     export let attrs: Partial<CircleAttributes> = {};
@@ -15,7 +15,7 @@
     const largeArcFlag = Math.abs(theta1 - theta2) < 180 ? 0 : 1;
     const sweepFlag = theta1 < theta2 ? 0 : 1;
 
-    const style = styles({
+    const style = utils.styles({
         ...CIRCLE_DEFAULTS,
         ...circle.attrs,
         ...attrs,
@@ -35,7 +35,7 @@
         .Z()
         .build();
 
-    debugDump(debug, d);
+    utils.debugDump(debug, d);
 </script>
 
 <path {d} {style} />

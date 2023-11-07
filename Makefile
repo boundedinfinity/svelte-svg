@@ -23,8 +23,8 @@ package:
 	npm run package
 
 push:
-	git add . || true
-	git commit m=$(m)
+	git add .
+	git commit -m $(m)
 	git push origin master
 
 publish:

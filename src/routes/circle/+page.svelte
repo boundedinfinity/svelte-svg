@@ -5,15 +5,17 @@
         CircleRadiusLine,
         CircleCircumPoint,
         CircleRadiusSlice,
+        circleUtils,
     } from "$lib/index.js";
+
     import type { CircleGeometry } from "$lib/index.js";
 
     const svgAttrs = {
         width: 600,
         height: 600,
-        viewBox: "0 0 {600} {600}",
+        viewBox: "0 0 600 600",
         xmlns: "http://www.w3.org/2000/svg",
-        preserveAspectRatio: "xMidYMid meet"
+        // preserveAspectRatio: "xMidYMid meet",
     };
     const debug = true;
     const r = 100;
@@ -24,10 +26,9 @@
     const c3: CircleGeometry = { c: { x: 450, y: 150 }, r };
     const c4: CircleGeometry = { c: { x: 150, y: 150 }, r };
 
-    import { interpolateLab } from "d3-interpolate";
-    import { tweened } from "svelte/motion";
-
-  
+    const a1: CircleGeometry = { c: { x: 150, y: 150 }, r: 50 };
+    const a2 = circleUtils.translate(a1, { dx: 100, dy: 100 });
+    const a3 = circleUtils.translate(a2, { dx: 100 });
 </script>
 
 <main>
@@ -36,26 +37,11 @@
         <div>
             <svg {...svgAttrs}>
                 <Circle
-                    circle={c4}
+                    circle={a1}
                     attrs={{ fill: "green", fillOpacity: "20%" }}
-                    animation={[c2]}
+                    animation={[a2, a3]}
                 />
             </svg>
-        </div>
-    </section>
-    <section>
-        <h2>CircleSvg</h2>
-        <div>
-            <CircleSvg
-                {debug}
-                r={300}
-                attrs={{
-                    strokeWidth: 5,
-                    fillOpacity: 0.5,
-                    stroke: "darkgreen",
-                    fill: "lightgreen",
-                }}
-            />
         </div>
     </section>
 
@@ -103,7 +89,12 @@
         <div>
             <svg {...svgAttrs}>
                 <Circle circle={c3} />
-                <CircleRadiusSlice circle={c3} theta1={90} theta2={0} />
+                <CircleRadiusSlice
+                    circle={c3}
+                    theta1={90}
+                    theta2={0}
+                    attrs={{ fill: "blue" }}
+                />
 
                 <Circle circle={c4} />
                 <CircleRadiusSlice
@@ -113,6 +104,22 @@
                     attrs={{ fill: "red" }}
                 />
             </svg>
+        </div>
+    </section>
+
+    <section>
+        <h2>CircleSvg</h2>
+        <div>
+            <CircleSvg
+                {debug}
+                r={300}
+                attrs={{
+                    strokeWidth: 5,
+                    fillOpacity: 0.5,
+                    stroke: "darkgreen",
+                    fill: "lightgreen",
+                }}
+            />
         </div>
     </section>
 </main>
