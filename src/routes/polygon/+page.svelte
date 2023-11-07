@@ -4,8 +4,8 @@
     import type { LineGeometry, CircleGeometry } from "$lib/types.js";
     const debug = true;
 
-    const l1: LineGeometry = { p1: { x: 20, y: 20 }, p2: { x: 70, y: 70 } };
-    const l2: LineGeometry = { p1: { x: 70, y: 20 }, p2: { x: 20, y: 70 } };
+    const l1: LineGeometry = { a: { x: 20, y: 20 }, b: { x: 70, y: 70 } };
+    const l2: LineGeometry = { a: { x: 70, y: 20 }, b: { x: 20, y: 70 } };
     
     const r = 25
     

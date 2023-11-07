@@ -22,22 +22,25 @@ export type {
 } from "./types.js";
 
 export { pathBuilder } from "./path.js";
-
-export { default as Point } from "./Point.svelte";
-
 export { default as Arc } from "./Arc.svelte";
 
+export { pointUtils, POINT_DEFAULTS } from "./point.js";
+export { default as Point } from "./Point.svelte";
+
+export { lineUtils, LINE_DEFAULTS } from "./line.js";
+export { default as Line } from "./Line.svelte";
+export { default as LinePoint } from "./LinePoint.svelte";
+export { default as LineMidPoint } from "./LineMidPoint.svelte";
+export { default as LineSvg } from "./LineSvg.svelte";
+
+export { circleUtils, CIRCLE_DEFAULTS } from "./circle.js";
 export { default as Circle } from "./Circle.svelte";
 export { default as CircleCircumPoint } from "./CircleCircumPoint.svelte";
 export { default as CircleRadiusLine } from "./CircleRadiusLine.svelte";
 export { default as CircleRadiusSlice } from "./CircleRadiusSlice.svelte";
 export { default as CircleSvg } from "./CircleSvg.svelte";
 
-export { default as Line } from "./Line.svelte";
-export { default as LinePoint } from "./LinePoint.svelte";
-export { default as LineMidPoint } from "./LineMidPoint.svelte";
-export { default as LineSvg } from "./LineSvg.svelte";
-
+export { polygonUtils } from "./polygon/polygon.js";
 export { default as Triangle } from "./polygon/Triangle.svelte"; // 3, trigon
 export { default as Square } from "./polygon/Square.svelte"; // 4, tetragon
 export { default as Pentagon } from "./polygon/Pentagon.svelte"; // 5

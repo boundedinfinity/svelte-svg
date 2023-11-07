@@ -7,7 +7,9 @@ import type {
     ViewBoxGeometry,
     RotationDirection,
 } from "./types.js";
+
 import { degToRad } from "./util.js";
+import { pointUtils } from "./point.js";
 
 export const CIRCLE_DEFAULTS: CircleAttributes = {
     display: "inline",
@@ -72,18 +74,23 @@ class CircleUtils {
         direction: RotationDirection = "counter-clockwise"
     ): LineGeometry {
         return {
-            p1: circle.c,
-            p2: this.pointOnCircumference(circle, theta, direction),
+            a: circle.c,
+            b: this.pointOnCircumference(circle, theta, direction),
         };
     }
 
-    yCoordinate(circle: CircleGeometry, x: number): number {
+    yCoordinate(circle: CircleGeometry, x: number): [number, number] {
         const h = circle.c.x;
-        const k = -circle.c.y;
+        const k = circle.c.y;
         const r = circle.r;
-        const y = k + Math.sqrt(Math.pow(r, 2) - Math.pow(x - h, 2));
+        const s = Math.sqrt(Math.pow(r, 2) - Math.pow(x - h, 2))
+        return [k + s, k - s];
+    }
 
-        return -y;
+    translate(circle: CircleGeometry, dx: number, dy: number): CircleGeometry {
+        const next: CircleGeometry = { ...circle };
+        next.c = pointUtils.translate(circle.c, dx, dy);
+        return next;
     }
 }
 

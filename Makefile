@@ -1,4 +1,6 @@
 .PHONY: clean deps dev build gen
+m := "updates"
+
 
 list:
 	@grep '^[^#[:space:]].*:' Makefile | grep -v ':=' | grep -v '^\.' | sed 's/:.*//g' | sed 's/://g' | sort
@@ -20,13 +22,10 @@ package:
 	npm install
 	npm run package
 
-add:
+push:
 	git add . || true
-	make commit m=$(m)
-
-commit:
-	git commit -m "$(m)" || true
-	git tag -a $(m) -f -m "$(m)"
+	git commit m=$(m)
+	git push origin master
 
 publish:
 	@make package

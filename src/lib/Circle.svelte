@@ -3,7 +3,8 @@
         CircleAttributes,
         CircleGeometry,
         LineGeometry,
-    } from "./index.js";
+    } from "./types.js";
+
     import { CIRCLE_DEFAULTS, circleUtils } from "./circle.js";
     import { lineUtils } from "./line.js";
     import { styles } from "./util.js";
@@ -21,21 +22,19 @@
         start: CircleGeometry,
         end: CircleGeometry
     ): (t: number) => CircleGeometry {
-        const current = { ...start };
-        const line: LineGeometry = {
-            p1: start.c,
-            p2: end.c,
+        const diameter: LineGeometry = { a: start.c, b: end.c };
+        const midpoint = lineUtils.midPoint(diameter);
+        const arc: CircleGeometry = {
+            c: midpoint,
+            r: lineUtils.length(diameter) / 2,
         };
 
-        // a * (1 - t) + b * t
         return function (t: number): CircleGeometry {
-            const x = lineUtils.pointAlongLine(line,t * 100).y;
-            const y = circleUtils.yCoordinate(current, x);
-            current.c = { 
-                x: current.c.x + x, 
-                y: current.c.y + y, 
-            };
-            return current;
+            const next: CircleGeometry = { ...start };
+            const x = lineUtils.pointAlongLine(diameter, t * 100).x;
+            const y = circleUtils.yCoordinate(arc, x)[0];
+            next.c = { x, y };
+            return next;
         };
     }
 

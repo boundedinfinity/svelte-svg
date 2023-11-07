@@ -16,7 +16,7 @@
     if (debug) console.log(line);
 </script>
 
-<line x1={line.p1.x} y1={line.p1.y} x2={line.p2.x} y2={line.p2.y} {style} />
+<line x1={line.a.x} y1={line.a.y} x2={line.b.x} y2={line.b.y} {style} />
 
 <style>
     line {

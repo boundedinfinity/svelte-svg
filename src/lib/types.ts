@@ -17,7 +17,7 @@ interface PresentationAttributes {
 export interface PointGeometry {
     x: number;
     y: number;
-    attrs?: PointAttributes;
+    attrs?: Partial<PointAttributes>;
 }
 
 export interface PointAttributes extends PresentationAttributes {}
@@ -47,8 +47,8 @@ export interface CircleAttributes extends PresentationAttributes {}
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap
 export interface LineGeometry {
-    p1: PointGeometry;
-    p2: PointGeometry;
+    a: PointGeometry;
+    b: PointGeometry;
     attrs?: Partial<LineAttributes>;
 }
 
