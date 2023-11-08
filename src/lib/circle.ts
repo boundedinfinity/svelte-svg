@@ -1,4 +1,5 @@
 import type { PointGeometry } from "./index.js";
+import { pathBuilder } from "./path.js";
 
 import type {
     CircleGeometry,
@@ -95,6 +96,10 @@ class CircleUtils {
         const next: CircleGeometry = { ...circle };
         next.c = pointUtils.translate(circle.c, delta);
         return next;
+    }
+
+    stepPath(a: CircleGeometry, b: CircleGeometry) {
+        pathBuilder().M(a.c);
     }
 }
 

@@ -1,3 +1,11 @@
+import type { Tweened } from "svelte/motion";
+
+export interface StepTweened<T> extends Tweened<T> {
+    next(): Promise<void>;
+    prev(): Promise<void>;
+    values(): T[];
+}
+
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Presentation
 interface PresentationAttributes {
     fill: string;

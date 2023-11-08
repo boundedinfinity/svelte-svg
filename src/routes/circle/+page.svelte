@@ -6,6 +6,8 @@
         CircleCircumPoint,
         CircleRadiusSlice,
         circleUtils,
+        CircleTween,
+        aniUtils,
     } from "$lib/index.js";
 
     import type { CircleGeometry } from "$lib/index.js";
@@ -18,17 +20,17 @@
         // preserveAspectRatio: "xMidYMid meet",
     };
     const debug = true;
-    const r = 100;
-
-    const c1: CircleGeometry = { c: { x: 150, y: 150 }, r };
-    const c2: CircleGeometry = { c: { x: 450, y: 150 }, r };
-
-    const c3: CircleGeometry = { c: { x: 450, y: 150 }, r };
-    const c4: CircleGeometry = { c: { x: 150, y: 150 }, r };
+    
+    const c1: CircleGeometry = { c: { x: 150, y: 150 }, r: 100 };
+    const c2: CircleGeometry = circleUtils.translate(c1, { dx: 150, dy: 150 });
+    const c3: CircleGeometry = circleUtils.translate(c2, { dx: 150, dy: 150 });
+    const c4: CircleGeometry = circleUtils.translate(c3, { dx: -150, dy: -150 });
 
     const a1: CircleGeometry = { c: { x: 150, y: 150 }, r: 50 };
     const a2 = circleUtils.translate(a1, { dx: 100, dy: 100 });
     const a3 = circleUtils.translate(a2, { dx: 100 });
+
+    const stepper = aniUtils.tweens.circle([c1, c2, c3, c4]);
 </script>
 
 <main>
@@ -36,13 +38,14 @@
         <h2>Circle Animated</h2>
         <div>
             <svg {...svgAttrs}>
-                <Circle
-                    circle={a1}
+                <CircleTween
+                    circle={stepper}
                     attrs={{ fill: "green", fillOpacity: "20%" }}
-                    animation={[a2, a3]}
                 />
             </svg>
         </div>
+        <button on:click={stepper.next}>Next</button>
+        <button on:click={stepper.prev}>Prev</button>
     </section>
 
     <section>

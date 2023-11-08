@@ -1,25 +1,31 @@
 <script lang="ts">
-    import type { CircleAttributes, CircleGeometry } from "./types.js";
+    import type {
+        CircleAttributes,
+        CircleGeometry,
+        StepTweened,
+    } from "./types.js";
     import { CIRCLE_DEFAULTS } from "./circle.js";
     import { utils } from "./util.js";
 
-    export let circle: CircleGeometry;
+    export let circle: StepTweened<CircleGeometry>;
     export let attrs: Partial<CircleAttributes> = {};
     export let debug: boolean = false;
 
-    const cattrs: CircleAttributes = {
+    $: cattrs = {
         ...CIRCLE_DEFAULTS,
-        ...circle.attrs,
+        ...$circle.attrs,
         ...attrs,
     };
+    $: style = utils.styles(cattrs);
 
-    const style = utils.styles(cattrs);
-
-    if (debug) console.log(circle);
-    if (debug) console.log(cattrs);
+    let svgPath: SVGPathElement;
 </script>
 
-<circle cx={circle.c.x} cy={circle.c.y} r={circle.r} {style} />
+<g>
+    <path bind:this={svgPath} />
+</g>
+
+<circle cx={$circle.c.x} cy={$circle.c.y} r={$circle.r} {style} />
 
 <style>
     circle {

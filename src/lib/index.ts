@@ -22,6 +22,8 @@ export type {
 } from "./types.js";
 
 export { pathBuilder } from "./path.js";
+export { aniUtils } from "./animation.js";
+
 export { default as Arc } from "./Arc.svelte";
 
 export { pointUtils, POINT_DEFAULTS } from "./point.js";
@@ -39,6 +41,7 @@ export { default as CircleCircumPoint } from "./CircleCircumPoint.svelte";
 export { default as CircleRadiusLine } from "./CircleRadiusLine.svelte";
 export { default as CircleRadiusSlice } from "./CircleRadiusSlice.svelte";
 export { default as CircleSvg } from "./CircleSvg.svelte";
+export { default as CircleTween } from "./CircleTween.svelte";
 
 export { polygonUtils } from "./polygon/polygon.js";
 export { default as Triangle } from "./polygon/Triangle.svelte"; // 3, trigon

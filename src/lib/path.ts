@@ -69,6 +69,7 @@ class PathBuilder {
         this.commands.push({ options: options, fn: m[symbol] });
     }
 
+    // move absolute
     M(point: PointGeometry): PathBuilder {
         this.append("M", point);
         return this;
@@ -84,8 +85,8 @@ class PathBuilder {
         return this;
     }
 
-    l(delta: DeltaGeometry): PathBuilder {
-        this.append("l", delta);
+    l(delta: Partial<DeltaGeometry>): PathBuilder {
+        this.append("l", pointUtils.safe(delta));
         return this;
     }
 
