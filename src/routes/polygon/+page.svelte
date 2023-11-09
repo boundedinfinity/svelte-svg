@@ -27,32 +27,32 @@
         <div>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width={200}
-                height={300}
+                width={800}
+                height={600}
                 viewBox="0 0 {200} {300}"
             >
-                <Triangle circle={circle3} />
+                <Triangle triangle={circle3} />
                 <Point point={circle3.c} />
 
-                <Square circle={circle4} />
+                <Square square={circle4} />
                 <Point point={circle4.c} />
 
-                <Pentagon circle={circle5} />
+                <Pentagon pentagon={circle5} />
                 <Point point={circle5.c} />
 
-                <Hexagon circle={circle6} />
+                <Hexagon hexagon={circle6} />
                 <Point point={circle6.c} />
 
-                <Octagon circle={circle8} />
+                <Octagon octagon={circle8} />
                 <Point point={circle8.c} />
 
-                <Enneagon circle={circle9} />
+                <Enneagon enneagon={circle9} />
                 <Point point={circle9.c} />
 
-                <Decagon circle={circle10} />
+                <Decagon decagon={circle10} />
                 <Point point={circle10.c} />
 
-                <Dodecagon circle={circle12} />
+                <Dodecagon dodecagon={circle12} />
                 <Point point={circle12.c} />
             </svg>
         </div>
@@ -64,8 +64,6 @@
         display: grid;
         justify-content: center;
         align-content: center;
-        width: 95vw;
-        height: 95vh;
     }
     div {
         width: fit-content;

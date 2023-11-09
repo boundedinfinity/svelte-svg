@@ -52,6 +52,18 @@ export interface CircleGeometry {
 
 export interface CircleAttributes extends PresentationAttributes {}
 
+export interface PolygonGeometry extends CircleGeometry {}
+export interface TriangleGeometry extends PolygonGeometry {}
+export interface SquareGeometry extends PolygonGeometry {}
+export interface PentagonGeometry extends PolygonGeometry {}
+export interface HexagonGeometry extends PolygonGeometry {}
+export interface HeptagonGeometry extends PolygonGeometry {}
+export interface OctagonGeometry extends PolygonGeometry {}
+export interface EnnecagonGeometry extends PolygonGeometry {}
+export interface DecagonGeometry extends PolygonGeometry {}
+export interface HendecagonGeometry extends PolygonGeometry {}
+export interface DodecagonGeometry extends PolygonGeometry {}
+
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap
 export interface LineGeometry {

@@ -1,9 +1,14 @@
-import type { CircleGeometry, PointGeometry } from "../types.js";
+import type {
+    PolygonGeometry,
+    PointGeometry,
+    DeltaGeometry,
+} from "../types.js";
 import { circleUtils } from "../circle.js";
+import { pointUtils } from "../point.js";
 import { pathBuilder } from "../path.js";
 
 class PolygonUtils {
-    vertices(circle: CircleGeometry, vertices: number): PointGeometry[] {
+    vertices(circle: PolygonGeometry, vertices: number): PointGeometry[] {
         const points: PointGeometry[] = [];
         const step = 360 / vertices;
 
@@ -14,7 +19,7 @@ class PolygonUtils {
         return points;
     }
 
-    path(circle: CircleGeometry, vertices: number): string {
+    path(circle: PolygonGeometry, vertices: number): string {
         const points = this.vertices(circle, vertices);
         const builder = pathBuilder();
 
@@ -31,6 +36,15 @@ class PolygonUtils {
         builder.Z();
 
         return builder.build();
+    }
+
+    translate<T extends PolygonGeometry>(
+        circle: T,
+        delta: Partial<DeltaGeometry>
+    ): T {
+        const next: T = { ...circle };
+        next.c = pointUtils.translate(circle.c, delta);
+        return next;
     }
 }
 

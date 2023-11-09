@@ -1,8 +1,8 @@
 <script lang="ts">
     import Polygon from "./Polygon.svelte";
-    import type { CircleGeometry } from "../types.js";
+    import type { HeptagonGeometry } from "../types.js";
 
-    export let circle: CircleGeometry;
+    export let heptagon: HeptagonGeometry;
 </script>
 
-<Polygon {circle} vertices={7} rotate={-90} />
+<Polygon polygon={heptagon} vertices={7} rotate={-90} />

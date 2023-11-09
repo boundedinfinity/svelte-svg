@@ -1,8 +1,8 @@
 <script lang="ts">
     import Polygon from "./Polygon.svelte";
-    import type { CircleGeometry } from "../types.js";
+    import type { EnnecagonGeometry } from "../types.js";
 
-    export let circle: CircleGeometry;
+    export let enneagon: EnnecagonGeometry;
 </script>
 
-<Polygon {circle} vertices={9} rotate={-90} />
+<Polygon polygon={enneagon} vertices={9} rotate={-90} />
