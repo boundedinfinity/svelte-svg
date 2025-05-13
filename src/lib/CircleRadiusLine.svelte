@@ -7,11 +7,21 @@
     import Line from "./Line.svelte";
     import { circleUtils } from "./circle.js";
 
-    export let circle: CircleGeometry;
-    export let attrs: Partial<LineAttributes> = {};
-    export let theta = 0;
-    export let direction: RotationDirection = "counter-clockwise";
-    export let debug: boolean = false;
+    interface Props {
+        circle: CircleGeometry;
+        attrs?: Partial<LineAttributes>;
+        theta?: number;
+        direction?: RotationDirection;
+        debug?: boolean;
+    }
+
+    let {
+        circle,
+        attrs = {},
+        theta = 0,
+        direction = "counter-clockwise",
+        debug = false
+    }: Props = $props();
 
     const line = circleUtils.lineToCircumference(circle, theta, direction);
 </script>

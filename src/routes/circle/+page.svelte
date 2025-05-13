@@ -44,8 +44,8 @@
                 />
             </svg>
         </div>
-        <button on:click={stepper.next}>Next</button>
-        <button on:click={stepper.prev}>Prev</button>
+        <button onclick={stepper.next}>Next</button>
+        <button onclick={stepper.prev}>Prev</button>
     </section>
 
     <section>

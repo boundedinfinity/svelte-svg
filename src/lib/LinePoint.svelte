@@ -3,10 +3,19 @@
     import Point from "./Point.svelte";
     import { lineUtils } from "./line.js";
 
-    export let line: LineGeometry;
-    export let percentage = 5;
-    export let attrs: Partial<PointAttributes> = {};
-    export let debug: boolean = false;
+    interface Props {
+        line: LineGeometry;
+        percentage?: number;
+        attrs?: Partial<PointAttributes>;
+        debug?: boolean;
+    }
+
+    let {
+        line,
+        percentage = 5,
+        attrs = {},
+        debug = false
+    }: Props = $props();
 
     const point = lineUtils.pointAlongLine(line, percentage);
 </script>

@@ -7,18 +7,22 @@
     import { CIRCLE_DEFAULTS } from "./circle.js";
     import { utils } from "./util.js";
 
-    export let circle: StepTweened<CircleGeometry>;
-    export let attrs: Partial<CircleAttributes> = {};
-    export let debug: boolean = false;
+    interface Props {
+        circle: StepTweened<CircleGeometry>;
+        attrs?: Partial<CircleAttributes>;
+        debug?: boolean;
+    }
 
-    $: cattrs = {
+    let { circle, attrs = {}, debug = false }: Props = $props();
+
+    let cattrs = $derived({
         ...CIRCLE_DEFAULTS,
         ...$circle.attrs,
         ...attrs,
-    };
-    $: style = utils.styles(cattrs);
+    });
+    let style = $derived(utils.styles(cattrs));
 
-    let svgPath: SVGPathElement;
+    let svgPath: SVGPathElement = $state();
 </script>
 
 <g>

@@ -2,7 +2,11 @@
     import Polygon from "./Polygon.svelte";
     import type { OctagonGeometry } from "../types.js";
 
-    export let octagon: OctagonGeometry;
+    interface Props {
+        octagon: OctagonGeometry;
+    }
+
+    let { octagon }: Props = $props();
 </script>
 
 <Polygon polygon={octagon} vertices={8} rotate={-90} />

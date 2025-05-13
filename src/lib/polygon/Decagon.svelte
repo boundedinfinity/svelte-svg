@@ -2,7 +2,11 @@
     import Polygon from "./Polygon.svelte";
     import type { DecagonGeometry } from "../types.js";
 
-    export let decagon: DecagonGeometry;
+    interface Props {
+        decagon: DecagonGeometry;
+    }
+
+    let { decagon }: Props = $props();
 </script>
 
 <Polygon polygon={decagon} vertices={10} rotate={-90} />

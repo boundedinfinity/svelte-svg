@@ -8,10 +8,19 @@
     import { utils } from "./util.js";
     import { POINT_DEFAULTS } from "./point.js";
 
-    export let point: PointGeometry;
-    export let attrs: Partial<PointAttributes> = {};
-    export let offset: number = 0.05;
-    export let debug: boolean = false;
+    interface Props {
+        point: PointGeometry;
+        attrs?: Partial<PointAttributes>;
+        offset?: number;
+        debug?: boolean;
+    }
+
+    let {
+        point,
+        attrs = {},
+        offset = 0.05,
+        debug = false
+    }: Props = $props();
 
     const cattrs: PointAttributes = {
         ...POINT_DEFAULTS,

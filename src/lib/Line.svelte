@@ -3,9 +3,13 @@
     import { LINE_DEFAULTS } from "./line.js";
     import { utils } from "./util.js";
 
-    export let line: LineGeometry;
-    export let attrs: Partial<LineAttributes> = {};
-    export let debug: boolean = false;
+    interface Props {
+        line: LineGeometry;
+        attrs?: Partial<LineAttributes>;
+        debug?: boolean;
+    }
+
+    let { line, attrs = {}, debug = false }: Props = $props();
 
     const style = utils.styles({
         ...LINE_DEFAULTS,

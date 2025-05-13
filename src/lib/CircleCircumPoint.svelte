@@ -7,11 +7,21 @@
     import Point from "./Point.svelte";
     import { circleUtils } from "./circle.js";
 
-    export let circle: CircleGeometry;
-    export let theta = 0;
-    export let direction: RotationDirection = "counter-clockwise";
-    export let attrs: Partial<PointAttributes> = {};
-    export let debug: boolean = false;
+    interface Props {
+        circle: CircleGeometry;
+        theta?: number;
+        direction?: RotationDirection;
+        attrs?: Partial<PointAttributes>;
+        debug?: boolean;
+    }
+
+    let {
+        circle,
+        theta = 0,
+        direction = "counter-clockwise",
+        attrs = {},
+        debug = false
+    }: Props = $props();
 
     const point = circleUtils.pointOnCircumference(circle, theta, direction);
 </script>

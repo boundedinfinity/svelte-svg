@@ -4,9 +4,13 @@
     import { circleUtils } from "./circle.js";
     import { utils } from "./util.js";
 
-    export let r: number = 10;
-    export let attrs: Partial<CircleAttributes> = {};
-    export let debug: boolean = false;
+    interface Props {
+        r?: number;
+        attrs?: Partial<CircleAttributes>;
+        debug?: boolean;
+    }
+
+    let { r = 10, attrs = {}, debug = false }: Props = $props();
 
     const circle = { c: { x: 0, y: 0 }, r };
     const viewBox = circleUtils.viewBox(circle);

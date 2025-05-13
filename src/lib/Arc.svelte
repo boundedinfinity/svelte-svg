@@ -4,8 +4,12 @@
     import type { PointAttributes } from "./types.js";
     import { POINT_DEFAULTS } from "./point.js";
 
-    export let attrs: Partial<PointAttributes> = POINT_DEFAULTS;
-    export let debug: boolean = false;
+    interface Props {
+        attrs?: Partial<PointAttributes>;
+        debug?: boolean;
+    }
+
+    let { attrs = POINT_DEFAULTS, debug = false }: Props = $props();
 
     const path = pathBuilder()
         .M({ x: 80, y: 80 })

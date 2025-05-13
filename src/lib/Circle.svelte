@@ -3,9 +3,13 @@
     import { CIRCLE_DEFAULTS } from "./circle.js";
     import { utils } from "./util.js";
 
-    export let circle: CircleGeometry;
-    export let attrs: Partial<CircleAttributes> = {};
-    export let debug: boolean = false;
+    interface Props {
+        circle: CircleGeometry;
+        attrs?: Partial<CircleAttributes>;
+        debug?: boolean;
+    }
+
+    let { circle, attrs = {}, debug = false }: Props = $props();
 
     const cattrs: CircleAttributes = {
         ...CIRCLE_DEFAULTS,

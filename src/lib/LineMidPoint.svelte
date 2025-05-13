@@ -2,9 +2,13 @@
     import type { LineGeometry, PointAttributes } from "./types.js";
     import LinePoint from "./LinePoint.svelte";
 
-    export let line: LineGeometry;
-    export let attrs: Partial<PointAttributes> = {};
-    export let debug: boolean = false;
+    interface Props {
+        line: LineGeometry;
+        attrs?: Partial<PointAttributes>;
+        debug?: boolean;
+    }
+
+    let { line, attrs = {}, debug = false }: Props = $props();
 </script>
 
 <LinePoint {line} percentage={50} {debug} {...attrs} />

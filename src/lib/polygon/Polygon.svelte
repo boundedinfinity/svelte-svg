@@ -2,9 +2,13 @@
     import type { PolygonGeometry } from "../types.js";
     import { polygonUtils } from "./polygon.js";
 
-    export let polygon: PolygonGeometry;
-    export let vertices: number;
-    export let rotate: number = 0;
+    interface Props {
+        polygon: PolygonGeometry;
+        vertices: number;
+        rotate?: number;
+    }
+
+    let { polygon, vertices, rotate = 0 }: Props = $props();
 
     const points = polygonUtils
         .vertices(polygon, vertices)

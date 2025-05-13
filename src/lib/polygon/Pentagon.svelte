@@ -2,7 +2,11 @@
     import Polygon from "./Polygon.svelte";
     import type { PentagonGeometry } from "../types.js";
 
-    export let pentagon: PentagonGeometry;
+    interface Props {
+        pentagon: PentagonGeometry;
+    }
+
+    let { pentagon }: Props = $props();
 </script>
 
 <Polygon polygon={pentagon} vertices={5} rotate={-90} />

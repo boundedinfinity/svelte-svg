@@ -4,11 +4,21 @@
     import { pathBuilder } from "./path.js";
     import { utils } from "./util.js";
 
-    export let circle: CircleGeometry;
-    export let attrs: Partial<CircleAttributes> = {};
-    export let theta1 = 0;
-    export let theta2 = 90;
-    export let debug: boolean = false;
+    interface Props {
+        circle: CircleGeometry;
+        attrs?: Partial<CircleAttributes>;
+        theta1?: number;
+        theta2?: number;
+        debug?: boolean;
+    }
+
+    let {
+        circle,
+        attrs = {},
+        theta1 = 0,
+        theta2 = 90,
+        debug = false
+    }: Props = $props();
 
     const p1 = circleUtils.pointOnCircumference(circle, theta1);
     const p2 = circleUtils.pointOnCircumference(circle, theta2);

@@ -2,7 +2,11 @@
     import Polygon from "./Polygon.svelte";
     import type { HeptagonGeometry } from "../types.js";
 
-    export let heptagon: HeptagonGeometry;
+    interface Props {
+        heptagon: HeptagonGeometry;
+    }
+
+    let { heptagon }: Props = $props();
 </script>
 
 <Polygon polygon={heptagon} vertices={7} rotate={-90} />

@@ -4,11 +4,15 @@
     import { lineUtils } from "./line.js";
     import { utils } from "./util.js";
 
-    export let line: LineGeometry;
-    export let debug = false;
 
     const viewBox = lineUtils.viewBox(line);
-    export let attrs: Partial<LineAttributes> = {};
+    interface Props {
+        line: LineGeometry;
+        debug?: boolean;
+        attrs?: Partial<LineAttributes>;
+    }
+
+    let { line, debug = false, attrs = {} }: Props = $props();
 
     if (debug) console.log(viewBox);
 </script>

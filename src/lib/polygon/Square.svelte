@@ -2,7 +2,11 @@
     import Polygon from "./Polygon.svelte";
     import type { SquareGeometry } from "../types.js";
 
-    export let square: SquareGeometry;
+    interface Props {
+        square: SquareGeometry;
+    }
+
+    let { square }: Props = $props();
 </script>
 
 <Polygon polygon={square} vertices={4} rotate={-45} />
